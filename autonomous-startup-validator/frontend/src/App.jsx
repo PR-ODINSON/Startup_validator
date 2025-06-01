@@ -6,8 +6,6 @@ import {
 } from "react-router-dom";
 
 
-import Home from "./pages/Landing";
-import SubmitIdea from "./pages/SubmitIdea";
 import Dashboard from "./pages/Dashboard";
 import Report from "./pages/Report";
 import Login from "./pages/Auth/Login";
