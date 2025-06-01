@@ -5,7 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import Home from "./pages/Home";
+
 import Home from "./pages/Landing";
 import SubmitIdea from "./pages/SubmitIdea";
 import Dashboard from "./pages/Dashboard";
@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+
         <Route path="/" element={<Landing />} />
         <Route path="/submit" element={isLoggedIn ? <SubmitIdea /> : <Navigate to="/login" />} />
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
