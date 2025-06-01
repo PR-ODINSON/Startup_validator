@@ -25,7 +25,7 @@ function App() {
     <Router>
       <Routes>
 
-        <Route path="/" element={<Landing />} />
+        <Route path="/Landing" element={<Landing />} />
         <Route path="/submit" element={isLoggedIn ? <SubmitIdea /> : <Navigate to="/login" />} />
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/report/:id" element={isLoggedIn ? <Report /> : <Navigate to="/login" />} />
