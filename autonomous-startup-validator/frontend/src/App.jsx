@@ -7,6 +7,7 @@ import {
 
 
 import Home from "./Pages/Landing";
+import Landing from "./Pages/Landing";
 import SubmitIdea from "./Pages/SubmitIdea";
 import Dashboard from "./pages/Dashboard";
 import Report from "./pages/Report";
