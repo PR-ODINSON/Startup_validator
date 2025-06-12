@@ -43,7 +43,24 @@ autonomous-startup-validator/
 ├── frontend/               # React + Tailwind frontend
 │   ├── src/
 │   │   ├── components/     # Reusable UI components
-│   │   ├── pages/          # Main pages (Submit, Dashboard, Report)
+│   │   ├── pages/         # Main pages (Submit, Dashboard, Report)
+            |──api/
+            ├──assets/
+            ├──components/
+            ├──Pages/
+                ├──Auth/
+                  ├──Register.jsx
+                  ├──login.jsx
+               ├──Dashboard.jsx
+               ├──Landing.jsx
+               ├──Profile.jsx
+               ├──Report.jsx
+               ├──SubmitIdea.jsx
+            ├──styles/
+              ├──index.css
+            ├──app.jsx
+            ├──index.js
+            ├──tailwind.config.js
 │   │   ├── api/            # API integration
 │   │   ├── assets/         # Images/icons
 │   │   ├── styles/         # Tailwind and custom CSS
