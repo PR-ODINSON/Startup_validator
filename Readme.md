@@ -43,25 +43,32 @@ autonomous-startup-validator/
 ├── frontend/               # React + Tailwind frontend
 │   ├── src/
 │   │   ├── components/     # Reusable UI components
-│   │   ├── pages/         # Main pages (Submit, Dashboard, Report)
-            |──api/
-            ├──assets/
-            ├──components/
-            ├──Pages/
-                ├──Auth/
-                  ├──Register.jsx
-                  ├──login.jsx
-               ├──Dashboard.jsx
-               ├──Landing.jsx
-               ├──Profile.jsx
-               ├──Report.jsx
-               ├──SubmitIdea.jsx
-            ├──styles/
-              ├──index.css
-            ├──app.jsx
-            ├──index.js
-            ├──tailwind.config.js
-│   │   ├── api/            # API integration
+│   │   ├── api/
+│   │   │   ├── config.js          # Axios configuration and interceptors
+│   │   │   ├── auth.js            # Authentication API calls
+│   │   │   ├── ideas.js           # Ideas submission and management
+│   │   │   ├── analysis.js        # AI analysis and reports
+│   │   │   ├── profile.js         # User profile management
+│   │   │   ├── platform.js        # Platform statistics
+│   │   │   ├── files.js           # File upload/download
+│   │   │   └── index.js           # Export all API functions
+│   │   │
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   │   ├── Auth/ 
+│   │   │   │   ├── Register.jsx
+│   │   │   │   └── login.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Landing.jsx
+│   │   │   ├── Profile.jsx
+│   │   │   ├── Report.jsx
+│   │   │   └── SubmitIdea.jsx
+│   │   ├── styles/
+│   │   │   ├── index.css
+│   │   ├── App.jsx
+│   │   ├── index.js
+│   │   └── tailwind.config.js
 │   │   ├── assets/         # Images/icons
 │   │   ├── styles/         # Tailwind and custom CSS
 │   │   └── App.jsx         # Main entry
