@@ -6,13 +6,13 @@ import {
 } from "react-router-dom";
 
 
+import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 import Landing from "./Pages/Landing";
 import SubmitIdea from "./Pages/SubmitIdea";
-import Dashboard from "./pages/Dashboard";
 import Report from "./pages/Report";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
-import Profile from "./pages/Profile";
 import MentorDashboard from "./pages/MentorDashboard";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
@@ -24,14 +24,14 @@ function App() {
   return (
     <Router>
       <Routes>
-
+        <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
+        <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/Landing" element={<Landing />} />
         <Route path="/submit" element={isLoggedIn ? <SubmitIdea /> : <Navigate to="/login" />} />
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/report/:id" element={isLoggedIn ? <Report /> : <Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
         <Route path="/mentor" element={<MentorDashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
