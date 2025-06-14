@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import api from '../api/config';
 
 const SubmitIdea = () => {
   const [ideaText, setIdeaText] = useState('');
@@ -22,7 +23,17 @@ const SubmitIdea = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  // Example function to submit an idea
+  const handleSubmit = async (ideaData) => {
+    try {
+      const response = await api.post('/ideas', ideaData);
+      // handle success
+    } catch (error) {
+      // handle error
+    }
+  };
+
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
@@ -129,7 +140,7 @@ const SubmitIdea = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmitForm}>
             {/* Submission Type Selector */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-3">

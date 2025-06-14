@@ -7,6 +7,7 @@ import AnimatedIcon from '../components/AnimatedIcon';
 import FadeInSection from '../components/FadeInSection';
 import TestimonialsCarousel from '../components/TestimonialsCarousel';
 import Confetti from '../components/Confetti';
+import api from '../api/config';
 
 export default function LandingPage() {
   const [content, setContent] = useState(null);
@@ -26,6 +27,17 @@ export default function LandingPage() {
       .catch(err => {
         setError(err.message || 'Failed to load landing content');
         setLoading(false);
+      });
+  }, []);
+
+  // Example usage of the api config
+  useEffect(() => {
+    api.get('/some-endpoint')
+      .then(response => {
+        // handle response
+      })
+      .catch(error => {
+        // handle error
       });
   }, []);
 
