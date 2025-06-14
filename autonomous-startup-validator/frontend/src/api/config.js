@@ -1,9 +1,10 @@
 // src/api/config.js
 import axios from 'axios';
 
+// Set your API base URL from environment or fallback
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
-// Create axios instance
+// Create a reusable axios instance
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 30000,
@@ -12,7 +13,7 @@ const api = axios.create({
   },
 });
 
-// Request interceptor to add auth token
+// Request interceptor: add JWT token if available
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -21,21 +22,23 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Response interceptor to handle auth errors
+// Response interceptor: handle auth errors and global errors
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      // Clear auth data and redirect to login
+    // Handle unauthorized (token expired or invalid)
+    if (error.response && error.response.status === 401) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.location.href = '/login';
+      // Optionally, show a notification here
+      if (window.location.pathname !== '/login') {
+        window.location.href = '/login';
+      }
     }
+    // Optionally, handle other status codes globally here
     return Promise.reject(error);
   }
 );
