@@ -7,7 +7,7 @@ import AnimatedIcon from '../components/AnimatedIcon';
 import FadeInSection from '../components/FadeInSection';
 import TestimonialsCarousel from '../components/TestimonialsCarousel';
 import Confetti from '../components/Confetti';
-import api from '../api/config';
+import FeaturesMarquee from '../components/FeaturesMarquee';
 
 export default function LandingPage() {
   const [content, setContent] = useState(null);
@@ -27,17 +27,6 @@ export default function LandingPage() {
       .catch(err => {
         setError(err.message || 'Failed to load landing content');
         setLoading(false);
-      });
-  }, []);
-
-  // Example usage of the api config
-  useEffect(() => {
-    api.get('/some-endpoint')
-      .then(response => {
-        // handle response
-      })
-      .catch(error => {
-        // handle error
       });
   }, []);
 
@@ -243,37 +232,7 @@ export default function LandingPage() {
       <div style={{ height: 32 }} />
 
       {/* Features Section with Pastel Background */}
-      <section style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: 32,
-        background: 'linear-gradient(120deg, #f0fdf4 60%, #e0e7ff 100%)',
-        borderRadius: 24,
-        margin: '0 24px',
-        padding: '48px 24px',
-        boxShadow: '0 2px 12px rgba(0,0,0,0.03)'
-      }}>
-        {content.features.map((feature, idx) => (
-          <FadeInSection key={idx} delay={0.1 * idx}>
-            <div style={{
-              flex: '1 1 220px',
-              minWidth: 220,
-              maxWidth: 320,
-              background: '#fff',
-              borderRadius: 12,
-              padding: 24,
-              margin: 8,
-              boxShadow: '0 1px 4px rgba(0,0,0,0.02)',
-              textAlign: 'center'
-            }}>
-              <AnimatedIcon icon={['⚡', '🧠', '📊', '🏆', '📈', '🎯', '🔗'][idx % 7]} color={['#2563eb', '#22c55e', '#f59e42', '#e11d48', '#a21caf', '#0ea5e9', '#fbbf24'][idx % 7]} delay={0.1 * idx} />
-              <div style={{ fontWeight: 700, fontSize: 20, color: '#18181b', marginBottom: 4 }}>{feature.title}</div>
-              <div style={{ color: '#52525b', fontSize: 15 }}>{feature.desc}</div>
-            </div>
-          </FadeInSection>
-        ))}
-      </section>
+      <FeaturesMarquee features={content.features} />
 
       {/* How it Works Timeline */}
       <section style={{
