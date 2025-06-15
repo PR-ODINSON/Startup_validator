@@ -45,10 +45,10 @@ export default function LandingPage() {
 
       <Navbar onSignIn={() => navigate('/login')} />
       <HeroSection
-        title={content.heroTitle}
-        subtitle={content.heroSubtitle}
-        button={content.heroButton}
-        image={content.heroImage}
+        title={content && content.heroTitle ? content.heroTitle.replace('Vlidate', 'Validate').replace('undefined', '') : 'Validate Your Startup Idea in Minutes'}
+        subtitle={content?.heroSubtitle}
+        button={content?.heroButton}
+        image={content?.heroImage}
         onGetStarted={() => navigate('/submit-idea')}
       />
       <div style={{ height: 32 }} />
