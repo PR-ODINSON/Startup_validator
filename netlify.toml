@@ -5,8 +5,8 @@
   # Directory that contains the deploy-ready HTML files and assets (relative to base)
   publish = "build"
   
-  # Build command to run from the frontend directory (using CI=false to ignore warnings)
-  command = "npm run build:netlify"
+  # Build command to run from the frontend directory
+  command = "npm ci && npm run build"
 
 [build.environment]
   # Node version for build
