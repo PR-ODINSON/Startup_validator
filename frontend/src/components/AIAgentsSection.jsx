@@ -258,7 +258,7 @@ const AIAgentsSection = () => {
             <div>
               <div className="flex items-center gap-4 mb-6">
                 <div className={`p-4 rounded-2xl bg-gradient-to-r ${agents[activeAgent].color} shadow-lg`}>
-                  <agents[activeAgent].icon className="w-8 h-8 text-white" />
+                  {React.createElement(agents[activeAgent].icon, { className: "w-8 h-8 text-white" })}
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900">
