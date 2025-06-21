@@ -96,15 +96,15 @@ const FeaturesSection = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 text-emerald-700 text-sm font-semibold mb-6"
           >
             <Zap className="w-4 h-4" />
-            <span>Powerful Features</span>
+            <span className="tracking-wide">Powerful Features</span>
           </motion.div>
           
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight"
           >
             Why Choose{' '}
             <span className="gradient-text">StartupValidator</span>?
@@ -112,7 +112,7 @@ const FeaturesSection = () => {
           
           <motion.p
             variants={itemVariants}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed text-balance"
           >
             Cut weeks of research and validation down to minutes. Our AI agents analyze your idea from every angle—market, competition, product, and more.
           </motion.p>
@@ -131,35 +131,37 @@ const FeaturesSection = () => {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ 
-                  y: -8,
-                  transition: { duration: 0.3, ease: "easeOut" }
+                  y: -12,
+                  scale: 1.03,
+                  transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
                 }}
-                className="group relative"
+                whileTap={{ scale: 0.98 }}
+                className="group relative cursor-pointer"
               >
-                <div className="professional-card card-glow relative p-10 overflow-hidden">
-                  {/* Background gradient on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+                <div className="professional-card card-glow relative p-8 bg-gradient-to-br from-white to-slate-50/30">
                   {/* Icon */}
-                  <div className="relative mb-6">
-                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.color} shadow-lg`}>
-                      <Icon className="w-8 h-8 text-white" />
+                  <div className="mb-6">
+                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.color} shadow-xl transform group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="w-7 h-7 text-white" />
                     </div>
                   </div>
                   
                   {/* Content */}
-                  <div className="relative">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-900 transition-colors duration-300 tracking-tight">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-900 transition-colors duration-300 tracking-tight">
                       {feature.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed font-medium text-balance">
+                    <p className="text-slate-600 leading-relaxed font-medium text-balance text-sm">
                       {feature.description}
                     </p>
                   </div>
 
-                  {/* Decorative elements */}
-                  <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-blue-100 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-100 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Hover indicator */}
+                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
+                      <Zap className="w-4 h-4 text-white" />
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             );
