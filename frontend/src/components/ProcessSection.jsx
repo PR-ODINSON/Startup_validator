@@ -129,7 +129,7 @@ const ProcessSection = () => {
                   variants={itemVariants}
                   className="relative group"
                 >
-                  <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
+                  <div className="professional-card card-glow p-10 relative">
                     {/* Background decoration */}
                     <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-slate-50 to-transparent rounded-full transform translate-x-6 -translate-y-6" />
                     
@@ -147,17 +147,17 @@ const ProcessSection = () => {
                     
                     {/* Content */}
                     <div className="relative z-10">
-                      <h3 className="text-xl font-bold text-slate-900 mb-3">
+                      <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">
                         {step.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed mb-4">
+                      <p className="text-slate-600 leading-relaxed mb-6 text-balance font-medium">
                         {step.description}
                       </p>
                       
                       {/* Time indicator */}
-                      <div className="flex items-center gap-2 text-sm text-blue-600 font-medium">
+                      <div className="flex items-center gap-3 text-sm text-blue-600 font-semibold bg-blue-50 px-4 py-2 rounded-full w-fit">
                         <Clock className="w-4 h-4" />
-                        <span>{step.time}</span>
+                        <span className="tracking-wide">{step.time}</span>
                       </div>
                     </div>
 

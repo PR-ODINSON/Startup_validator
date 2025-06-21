@@ -136,7 +136,7 @@ const FeaturesSection = () => {
                 }}
                 className="group relative"
               >
-                <div className="relative p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden">
+                <div className="professional-card card-glow relative p-10 overflow-hidden">
                   {/* Background gradient on hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
@@ -149,10 +149,10 @@ const FeaturesSection = () => {
                   
                   {/* Content */}
                   <div className="relative">
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-900 transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-900 transition-colors duration-300 tracking-tight">
                       {feature.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-slate-600 leading-relaxed font-medium text-balance">
                       {feature.description}
                     </p>
                   </div>

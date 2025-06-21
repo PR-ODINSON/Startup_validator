@@ -199,36 +199,38 @@ const AIAgentsSection = () => {
                 key={agent.id}
                 variants={itemVariants}
                 whileHover={{ 
-                  y: -8,
-                  transition: { duration: 0.3, ease: "easeOut" }
+                  y: -12,
+                  scale: 1.03,
+                  transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
                 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setActiveAgent(index)}
-                className={`group relative cursor-pointer transition-all duration-300 ${
-                  activeAgent === index ? 'ring-2 ring-blue-500 ring-offset-2' : ''
+                className={`group relative cursor-pointer ${
+                  activeAgent === index ? 'ring-2 ring-blue-500 ring-offset-4 ring-offset-slate-50' : ''
                 }`}
               >
-                <div className={`relative p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden ${agent.bgColor} bg-opacity-20`}>
+                <div className={`professional-card card-glow relative p-8 ${agent.bgColor} bg-opacity-10`}>
                   {/* Icon */}
-                  <div className="mb-4">
-                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${agent.color} shadow-lg`}>
-                      <Icon className="w-6 h-6 text-white" />
+                  <div className="mb-6">
+                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${agent.color} shadow-xl transform group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="w-7 h-7 text-white" />
                     </div>
                   </div>
                   
                   {/* Content */}
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-1">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 tracking-tight">
                       {agent.name}
                     </h3>
-                    <p className="text-sm text-blue-600 font-medium mb-3">
+                    <p className="text-sm text-blue-600 font-semibold mb-4 tracking-wide uppercase">
                       {agent.title}
                     </p>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                    <p className="text-slate-600 text-sm leading-relaxed mb-6 text-balance">
                       {agent.description}
                     </p>
-                    <div className="flex items-center text-blue-600 text-sm font-medium group-hover:text-blue-700 transition-colors">
-                      <span>Learn More</span>
-                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <div className="flex items-center text-blue-600 text-sm font-semibold group-hover:text-blue-700 transition-all duration-300">
+                      <span className="tracking-wide">Learn More</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-all duration-300" />
                     </div>
                   </div>
 
@@ -251,55 +253,55 @@ const AIAgentsSection = () => {
           key={activeAgent}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-slate-100"
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          className="professional-card bg-gradient-to-br from-white to-slate-50/50 p-10 md:p-14 border-2 border-slate-100"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`p-4 rounded-2xl bg-gradient-to-r ${agents[activeAgent].color} shadow-lg`}>
-                  {React.createElement(agents[activeAgent].icon, { className: "w-8 h-8 text-white" })}
+              <div className="flex items-center gap-6 mb-8">
+                <div className={`p-5 rounded-3xl bg-gradient-to-r ${agents[activeAgent].color} shadow-2xl`}>
+                  {React.createElement(agents[activeAgent].icon, { className: "w-9 h-9 text-white" })}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">
+                  <h3 className="text-3xl font-bold text-slate-900 tracking-tight mb-1">
                     {agents[activeAgent].name}
                   </h3>
-                  <p className="text-blue-600 font-medium">
+                  <p className="text-blue-600 font-semibold tracking-wide uppercase text-sm">
                     {agents[activeAgent].title}
                   </p>
                 </div>
               </div>
               
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+              <p className="text-lg text-slate-600 mb-10 leading-relaxed text-balance">
                 {agents[activeAgent].description}
               </p>
 
-              <div className="bg-slate-50 rounded-2xl p-6">
-                <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5 text-blue-600" />
+              <div className="bg-gradient-to-br from-slate-50 to-blue-50/30 rounded-3xl p-8 border border-slate-100">
+                <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-3 text-lg tracking-tight">
+                  <BarChart3 className="w-6 h-6 text-blue-600" />
                   Output Delivered
                 </h4>
-                <p className="text-slate-700">
+                <p className="text-slate-700 leading-relaxed font-medium">
                   {agents[activeAgent].output}
                 </p>
               </div>
             </div>
 
             <div>
-              <h4 className="text-xl font-bold text-slate-900 mb-6">Key Capabilities</h4>
-              <div className="space-y-4">
+              <h4 className="text-2xl font-bold text-slate-900 mb-8 tracking-tight">Key Capabilities</h4>
+              <div className="space-y-5">
                 {agents[activeAgent].capabilities.map((capability, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="flex items-start gap-3"
+                    className="flex items-start gap-4 p-4 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-100 hover:bg-white/80 transition-all duration-300"
                   >
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center mt-0.5">
+                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center mt-0.5 shadow-lg">
                       <CheckCircle className="w-4 h-4 text-white" />
                     </div>
-                    <p className="text-slate-700 leading-relaxed">
+                    <p className="text-slate-700 leading-relaxed font-medium">
                       {capability}
                     </p>
                   </motion.div>
