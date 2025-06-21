@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap, Target, TrendingUp } from 'lucide-react';
+import { useComingSoon } from '../App';
 
 const HeroSection = () => {
+  const { openComingSoonModal } = useComingSoon();
+
   const floatingIcons = [
     { Icon: Sparkles, delay: 0, x: -20, y: -30 },
     { Icon: Zap, delay: 0.5, x: 20, y: -20 },
@@ -104,51 +107,81 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             >
               <motion.button
+                onClick={openComingSoonModal}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary flex items-center gap-2 group"
+                className="btn-primary flex items-center gap-2 group text-lg px-12 py-4"
               >
-                <span>Start Validation</span>
+                <span>Join Waitlist</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-secondary"
+              {/* Coming Soon Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-sm font-semibold border border-orange-200"
               >
-                Watch Demo
-              </motion.button>
+                <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                <span className="tracking-wide">Coming Soon</span>
+              </motion.div>
             </motion.div>
 
-            {/* Stats */}
+            {/* Coming Soon Features Preview */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto"
+              className="max-w-4xl mx-auto"
             >
-              {[
-                { value: '1,200+', label: 'Ideas Validated' },
-                { value: '87%', label: 'Success Rate' },
-                { value: '40hrs', label: 'Time Saved' },
-                { value: '6', label: 'AI Agents' }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.7 + index * 0.1, duration: 0.6 }}
-                  className="text-center"
-                >
-                  <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1">
-                    {stat.value}
+              <div className="bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 rounded-3xl p-8 border border-blue-100 relative overflow-hidden">
+                {/* Animated background elements */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 via-purple-100/20 to-blue-100/20 animate-pulse"></div>
+                
+                <div className="relative z-10">
+                  <div className="text-center mb-6">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.8, duration: 0.6 }}
+                      className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg shadow-lg"
+                    >
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                      />
+                      <span>Coming Soon</span>
+                    </motion.div>
                   </div>
-                  <div className="text-sm text-slate-600">
-                    {stat.label}
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {[
+                      { value: '6', label: 'AI Agents Ready', icon: '🤖' },
+                      { value: '10min', label: 'Validation Time', icon: '⚡' },
+                      { value: '100%', label: 'Automated', icon: '🎯' },
+                      { value: 'Free', label: 'Early Access', icon: '🎉' }
+                    ].map((feature, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.9 + index * 0.1, duration: 0.6 }}
+                        className="text-center bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-white/40"
+                      >
+                        <div className="text-2xl mb-2">{feature.icon}</div>
+                        <div className="text-xl font-bold text-slate-900 mb-1">
+                          {feature.value}
+                        </div>
+                        <div className="text-xs text-slate-600 font-medium">
+                          {feature.label}
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
-                </motion.div>
-              ))}
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -173,6 +206,8 @@ const HeroSection = () => {
           />
         </motion.div>
       </motion.div>
+
+
     </section>
   );
 };

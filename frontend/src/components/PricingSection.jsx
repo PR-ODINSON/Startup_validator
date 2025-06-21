@@ -1,68 +1,60 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Check, Star, Zap, Crown } from 'lucide-react';
+import { useComingSoon } from '../App';
+import { Check, Star, Zap, Crown, Clock, Bell, Gift } from 'lucide-react';
 
 const PricingSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  const { openComingSoonModal } = useComingSoon();
 
-  const plans = [
+  const features = [
     {
-      name: 'Starter',
-      price: 'Free',
-      period: 'forever',
-      description: 'Perfect for testing your first idea',
+      name: 'Early Access',
+      description: 'Be the first to validate your ideas',
       icon: Zap,
-      features: [
-        '1 idea validation per month',
-        'Basic market analysis',
-        'Competition overview',
-        'Email support',
-        'PDF report export'
+      benefits: [
+        'First 100 users get lifetime 50% discount',
+        'Priority customer support',
+        'Exclusive beta features access',
+        'Direct feedback channel to our team',
+        'Free consultation session'
       ],
-      buttonText: 'Get Started Free',
-      popular: false,
+      highlight: 'Limited Time',
       gradient: 'from-blue-500 to-blue-600'
     },
     {
-      name: 'Pro',
-      price: '$29',
-      period: 'per month',
-      description: 'For serious entrepreneurs',
-      icon: Star,
-      features: [
-        '10 idea validations per month',
-        'Advanced AI analysis',
-        'Detailed competitor research',
-        'Investor perspective insights',
-        'Priority support',
-        'Custom branding',
-        'API access'
+      name: 'Launch Special',
+      description: 'Exclusive benefits for early supporters',
+      icon: Gift,
+      benefits: [
+        'Free Pro plan for first 3 months',
+        'Unlimited validations during beta',
+        'Personal onboarding session',
+        'Featured case study opportunity',
+        'Lifetime founder badge',
+        'Access to private community'
       ],
-      buttonText: 'Start Pro Trial',
-      popular: true,
-      gradient: 'from-purple-500 to-purple-600'
+      highlight: 'Most Popular',
+      gradient: 'from-purple-500 to-purple-600',
+      popular: true
     },
     {
-      name: 'Enterprise',
-      price: '$99',
-      period: 'per month',
-      description: 'For teams and agencies',
+      name: 'VIP Access',
+      description: 'For serious entrepreneurs',
       icon: Crown,
-      features: [
-        'Unlimited validations',
-        'White-label solution',
-        'Team collaboration',
-        'Advanced analytics',
-        'Dedicated account manager',
-        'Custom integrations',
-        'SLA guarantee'
+      benefits: [
+        'Skip the waitlist completely',
+        'Custom AI agent training',
+        'White-label opportunity',
+        'Revenue sharing program',
+        'Co-marketing opportunities',
+        'Direct line to founders'
       ],
-      buttonText: 'Contact Sales',
-      popular: false,
+      highlight: 'Exclusive',
       gradient: 'from-emerald-500 to-emerald-600'
     }
   ];
@@ -90,8 +82,24 @@ const PricingSection = () => {
   };
 
   return (
-    <section id="pricing" className="section-padding bg-gradient-to-b from-blue-50 to-white">
-      <div className="container-custom">
+    <section id="pricing" className="section-padding bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 animate-pulse"></div>
+        <motion.div
+          animate={{
+            background: [
+              "radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 50%, rgba(255, 119, 198, 0.3) 0%, transparent 50%)",
+              "radial-gradient(circle at 40% 50%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)"
+            ]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0"
+        />
+      </div>
+
+      <div className="container-custom relative z-10">
         <motion.div
           ref={ref}
           initial="hidden"
@@ -101,26 +109,42 @@ const PricingSection = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-6"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold mb-8 shadow-2xl"
           >
-            <Star className="w-4 h-4" />
-            <span>Simple Pricing</span>
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            >
+              <Clock className="w-5 h-5" />
+            </motion.div>
+            <span>Coming Soon - Join the Waitlist</span>
           </motion.div>
           
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
           >
-            Choose Your{' '}
-            <span className="gradient-text">Perfect Plan</span>
+            Get{' '}
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Exclusive Access
+            </span>
           </motion.h2>
           
           <motion.p
             variants={itemVariants}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8"
           >
-            Start free and scale as you grow. All plans include our core AI validation features.
+            Be among the first to experience the future of startup validation. Limited spots available.
           </motion.p>
+
+          {/* Countdown or urgency element */}
+          <motion.div
+            variants={itemVariants}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white border border-white/20"
+          >
+            <Bell className="w-4 h-4 animate-pulse" />
+            <span className="text-sm font-medium">Only 500 early access spots remaining</span>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -129,63 +153,71 @@ const PricingSection = () => {
           variants={containerVariants}
           className="grid grid-cols-1 lg:grid-cols-3 gap-8"
         >
-          {plans.map((plan, index) => {
-            const Icon = plan.icon;
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
             return (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ 
-                  y: -8,
+                  y: -12,
                   transition: { duration: 0.3, ease: "easeOut" }
                 }}
-                className={`relative group ${plan.popular ? 'lg:-mt-4' : ''}`}
+                className={`relative group ${feature.popular ? 'lg:-mt-4' : ''}`}
               >
                 {/* Popular badge */}
-                {plan.popular && (
+                {feature.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                      Most Popular
+                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-2xl animate-pulse">
+                      {feature.highlight}
                     </div>
                   </div>
                 )}
 
-                <div className={`relative p-8 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 ${
-                  plan.popular ? 'border-purple-200' : 'border-slate-100'
-                } overflow-hidden`}>
+                <div className={`relative p-8 bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 hover:border-white/40 transition-all duration-500 overflow-hidden group-hover:bg-white/15`}>
                   
-                  {/* Background gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                  {/* Animated background gradient */}
+                  <motion.div 
+                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                    whileHover={{ scale: 1.1 }}
+                  />
                   
                   {/* Header */}
                   <div className="relative text-center mb-8">
-                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${plan.gradient} shadow-lg mb-4`}>
+                    <motion.div 
+                      className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} shadow-2xl mb-6`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       <Icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
-                    <p className="text-slate-600">{plan.description}</p>
+                    </motion.div>
+                    <h3 className="text-2xl font-bold text-white mb-2">{feature.name}</h3>
+                    <p className="text-slate-300">{feature.description}</p>
                   </div>
 
-                  {/* Price */}
+                  {/* Highlight badge */}
                   <div className="relative text-center mb-8">
-                    <div className="flex items-baseline justify-center gap-2">
-                      <span className="text-5xl font-bold text-slate-900">{plan.price}</span>
-                      {plan.period && (
-                        <span className="text-slate-600">/{plan.period}</span>
-                      )}
+                    <div className={`inline-flex px-4 py-2 rounded-full bg-gradient-to-r ${feature.gradient} text-white font-bold text-sm shadow-lg`}>
+                      {feature.highlight}
                     </div>
                   </div>
 
-                  {/* Features */}
+                  {/* Benefits */}
                   <div className="relative mb-8">
                     <ul className="space-y-4">
-                      {plan.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-3">
-                          <div className={`flex-shrink-0 p-1 rounded-full bg-gradient-to-r ${plan.gradient}`}>
-                            <Check className="w-4 h-4 text-white" />
+                      {feature.benefits.map((benefit, benefitIndex) => (
+                        <motion.li 
+                          key={benefitIndex} 
+                          className="flex items-start gap-3"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                          transition={{ delay: 0.1 * benefitIndex }}
+                        >
+                          <div className={`flex-shrink-0 p-1 rounded-full bg-gradient-to-r ${feature.gradient} mt-1`}>
+                            <Check className="w-3 h-3 text-white" />
                           </div>
-                          <span className="text-slate-700">{feature}</span>
-                        </li>
+                          <span className="text-slate-300 text-sm leading-relaxed">{benefit}</span>
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
@@ -193,38 +225,47 @@ const PricingSection = () => {
                   {/* CTA Button */}
                   <div className="relative">
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`w-full py-4 px-6 rounded-2xl font-semibold transition-all duration-300 ${
-                        plan.popular
-                          ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg hover:shadow-xl'
-                          : 'bg-slate-100 text-slate-900 hover:bg-slate-200'
+                      onClick={openComingSoonModal}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`w-full py-4 px-6 rounded-2xl font-bold transition-all duration-300 ${
+                        feature.popular
+                          ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-2xl hover:shadow-orange-500/25'
+                          : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
                       }`}
                     >
-                      {plan.buttonText}
+                      Join Waitlist
                     </motion.button>
                   </div>
 
-                  {/* Decorative elements */}
-                  <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-slate-100 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Decorative glow */}
+                  <div className={`absolute -inset-1 bg-gradient-to-r ${feature.gradient} rounded-3xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`} />
                 </div>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* Bottom text */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ delay: 0.8, duration: 0.6 }}
           className="text-center mt-16"
         >
-          <p className="text-slate-600 mb-4">
-            All plans include a 14-day free trial. No credit card required.
+          <motion.button
+            onClick={openComingSoonModal}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="btn-primary text-xl px-12 py-5 mb-6 shadow-2xl"
+          >
+            Secure Your Spot Now
+          </motion.button>
+          <p className="text-slate-400 mb-2">
+            🔥 <strong className="text-white">347 people</strong> joined in the last 24 hours
           </p>
           <p className="text-sm text-slate-500">
-            Questions? <a href="#contact" className="text-blue-600 hover:text-blue-700 font-medium">Contact our sales team</a>
+            No spam, ever. Unsubscribe with one click.
           </p>
         </motion.div>
       </div>

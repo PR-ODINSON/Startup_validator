@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useComingSoon } from '../App';
 import { 
   Brain, 
   TrendingUp, 
@@ -16,6 +17,7 @@ const FeaturesSection = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const { openComingSoonModal } = useComingSoon();
 
   const features = [
     {
@@ -176,11 +178,12 @@ const FeaturesSection = () => {
           className="text-center mt-16"
         >
           <motion.button
+            onClick={openComingSoonModal}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn-primary text-lg px-10 py-4"
           >
-            Try All Features Free
+            Join Waitlist
           </motion.button>
         </motion.div>
       </div>

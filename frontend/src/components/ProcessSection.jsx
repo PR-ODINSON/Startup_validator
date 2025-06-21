@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useComingSoon } from '../App';
 import { 
   Upload, 
   Brain, 
@@ -17,6 +18,7 @@ const ProcessSection = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const { openComingSoonModal } = useComingSoon();
 
   const steps = [
     {
@@ -226,11 +228,12 @@ const ProcessSection = () => {
             </div>
             
             <motion.button
+              onClick={openComingSoonModal}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-primary text-lg px-10 py-4 inline-flex items-center gap-2"
             >
-              <span>Start Your Validation Journey</span>
+              <span>Join Waitlist</span>
               <ArrowRight className="w-5 h-5" />
             </motion.button>
           </div>

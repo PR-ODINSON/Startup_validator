@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Zap } from 'lucide-react';
+import { useComingSoon } from '../App';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { openComingSoonModal } = useComingSoon();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,27 +67,18 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Desktop CTA Button */}
+          <div className="hidden lg:flex items-center">
             <motion.button
+              onClick={openComingSoonModal}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200"
-            >
-              Sign In
-            </motion.button>
-            <motion.button
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               className="btn-primary"
             >
-              Get Started
+              Join Waitlist
             </motion.button>
           </div>
 
@@ -128,22 +121,15 @@ const Navbar = () => {
                     {item.name}
                   </motion.a>
                 ))}
-                <div className="flex flex-col gap-3 pt-4 border-t border-slate-200">
+                <div className="pt-4 border-t border-slate-200">
                   <motion.button
+                    onClick={openComingSoonModal}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4, duration: 0.3 }}
-                    className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200 text-left"
-                  >
-                    Sign In
-                  </motion.button>
-                  <motion.button
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5, duration: 0.3 }}
                     className="btn-primary w-full"
                   >
-                    Get Started
+                    Join Waitlist
                   </motion.button>
                 </div>
               </div>
