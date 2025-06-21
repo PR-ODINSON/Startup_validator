@@ -92,7 +92,7 @@ const HeroSection = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed"
             >
-              Get instant, expert-level analysis from AI agents acting as market analysts, investors, and product managers. 
+              Get instant, expert-level analysis from <span className="text-blue-600 font-semibold">6 specialized AI agents</span> acting as market researchers, investors, product managers, and pitch specialists. 
               <span className="text-blue-600 font-semibold"> Turn weeks of research into minutes of actionable insights.</span>
             </motion.p>
 
@@ -132,7 +132,7 @@ const HeroSection = () => {
                 { value: '1,200+', label: 'Ideas Validated' },
                 { value: '87%', label: 'Success Rate' },
                 { value: '40hrs', label: 'Time Saved' },
-                { value: '5', label: 'AI Agents' }
+                { value: '6', label: 'AI Agents' }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
