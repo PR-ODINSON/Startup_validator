@@ -1,0 +1,10 @@
+# Netlify redirects file for Single Page Application
+# This ensures all routes are handled by React Router
+
+/*    /index.html   200
+
+# Optional: Redirect old URLs if you have any
+# /old-page    /new-page    301
+
+# API proxy if needed (currently not used since it's a static landing page)
+# /api/*  https://your-backend-api.com/api/:splat  200 

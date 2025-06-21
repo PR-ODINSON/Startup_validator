@@ -1,0 +1,34 @@
+{
+  "name": "startup-validator",
+  "version": "1.0.0",
+  "description": "Autonomous Startup Validator - AI-powered startup idea validation platform",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd frontend && npm start",
+    "install-frontend": "cd frontend && npm install",
+    "install-backend": "cd backend && npm install",
+    "install-ai": "cd ai_agents && pip install -r requirements.txt",
+    "dev-frontend": "cd frontend && npm start",
+    "dev-backend": "cd backend && npm run start:dev",
+    "build-frontend": "cd frontend && npm run build",
+    "build-backend": "cd backend && npm run build"
+  },
+  "keywords": [
+    "startup",
+    "validation",
+    "ai",
+    "business",
+    "entrepreneurship"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/startup-validator.git"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+} 
