@@ -6,7 +6,7 @@
   publish = "build"
   
   # Build command to run from the frontend directory
-  command = "npm ci && npm run build"
+  command = "npm install && npm run build"
 
 [build.environment]
   # Node version for build
