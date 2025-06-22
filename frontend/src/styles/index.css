@@ -20,6 +20,22 @@
     scroll-behavior: smooth;
     scroll-padding-top: 100px; /* Account for fixed navbar */
   }
+  
+  /* Enhanced smooth scrolling */
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom smooth scrolling with easing */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    html:focus-within {
+      scroll-behavior: smooth;
+    }
+  }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif;
@@ -132,6 +148,46 @@
   /* Better spacing between sections */
   section + section {
     @apply border-t border-transparent;
+  }
+  
+  /* Ultra-smooth scrolling enhancements */
+  html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  
+  /* Improve scrolling performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Smooth transitions for all elements */
+  *,
+  *::before,
+  *::after {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3b82f6, #1e40af);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2563eb, #1d4ed8);
   }
   
   .container-custom {

@@ -1,6 +1,7 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, CheckCircle, X, Mail, Bell } from 'lucide-react';
+import { initSmoothScrolling } from './utils/smoothScroll';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ComingSoonSection from './components/ComingSoonSection';
@@ -157,6 +158,11 @@ function App() {
   const [showComingSoonModal, setShowComingSoonModal] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Initialize smooth scrolling on component mount
+  useEffect(() => {
+    initSmoothScrolling();
+  }, []);
 
   const openComingSoonModal = () => {
     setShowComingSoonModal(true);

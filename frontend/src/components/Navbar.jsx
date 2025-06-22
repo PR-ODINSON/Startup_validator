@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Zap } from 'lucide-react';
 import { useComingSoon } from '../App';
+import { handleSmoothScroll } from '../utils/smoothScroll';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,10 +57,11 @@ const Navbar = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleSmoothScroll(e, item.href)}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-                className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
+                className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group cursor-pointer"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
@@ -115,8 +117,11 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2"
+                    onClick={(e) => {
+                      handleSmoothScroll(e, item.href);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2 cursor-pointer"
                   >
                     {item.name}
                   </motion.a>
