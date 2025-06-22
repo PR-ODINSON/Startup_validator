@@ -117,7 +117,7 @@ const PricingSection = () => {
             >
               <Clock className="w-5 h-5" />
             </motion.div>
-            <span>Coming Soon - Join the Waitlist</span>
+            <span>Launching Soon - Limited Access</span>
           </motion.div>
           
           <motion.h2
@@ -222,21 +222,7 @@ const PricingSection = () => {
                     </ul>
                   </div>
 
-                  {/* CTA Button */}
-                  <div className="relative">
-                    <motion.button
-                      onClick={openComingSoonModal}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`w-full py-4 px-6 rounded-2xl font-bold transition-all duration-300 ${
-                        feature.popular
-                          ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-2xl hover:shadow-orange-500/25'
-                          : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
-                      }`}
-                    >
-                      Join Waitlist
-                    </motion.button>
-                  </div>
+
 
                   {/* Decorative glow */}
                   <div className={`absolute -inset-1 bg-gradient-to-r ${feature.gradient} rounded-3xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`} />
@@ -246,28 +232,7 @@ const PricingSection = () => {
           })}
         </motion.div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-center mt-16"
-        >
-          <motion.button
-            onClick={openComingSoonModal}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary text-xl px-12 py-5 mb-6 shadow-2xl"
-          >
-            Secure Your Spot Now
-          </motion.button>
-          <p className="text-slate-400 mb-2">
-            🔥 <strong className="text-white">347 people</strong> joined in the last 24 hours
-          </p>
-          <p className="text-sm text-slate-500">
-            No spam, ever. Unsubscribe with one click.
-          </p>
-        </motion.div>
+
       </div>
     </section>
   );

@@ -18,7 +18,7 @@
   
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Account for fixed navbar */
+    scroll-padding-top: 100px; /* Account for fixed navbar */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -116,7 +116,22 @@
   }
   
   .section-padding {
-    @apply py-20 lg:py-32;
+    @apply py-16 lg:py-24;
+  }
+  
+  .section-spacing {
+    @apply mb-8 lg:mb-16;
+  }
+  
+  /* Ensure no content is hidden behind the navbar */
+  .navbar-safe {
+    padding-top: 80px;
+    margin-top: -80px;
+  }
+  
+  /* Better spacing between sections */
+  section + section {
+    @apply border-t border-transparent;
   }
   
   .container-custom {

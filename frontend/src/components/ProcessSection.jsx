@@ -24,7 +24,7 @@ const ProcessSection = () => {
     {
       step: '01',
       title: 'Submit Your Idea',
-      description: 'Upload your startup idea via text, PDF, or connect your Notion workspace. Our system securely processes your information.',
+      description: 'Upload your startup idea via text, PDF, or connect your Notion workspace. Our system securely processes your information with enterprise-grade security.',
       icon: Upload,
       color: 'from-blue-500 to-blue-600',
       time: '30 seconds'
@@ -32,7 +32,7 @@ const ProcessSection = () => {
     {
       step: '02',
       title: 'AI Agents Activate',
-      description: 'Six specialized AI agents simultaneously analyze your idea from different expert perspectives - market, investment, product, and more.',
+      description: 'Six specialized AI agents simultaneously analyze your idea from different expert perspectives - market research, investment analysis, product strategy, and more.',
       icon: Brain,
       color: 'from-purple-500 to-purple-600',
       time: '2-3 minutes'
@@ -40,7 +40,7 @@ const ProcessSection = () => {
     {
       step: '03',
       title: 'Deep Analysis',
-      description: 'Each agent conducts comprehensive research: market sizing, competitor analysis, financial modeling, risk assessment, and validation scoring.',
+      description: 'Each agent conducts comprehensive research including market sizing, competitor analysis, financial modeling, risk assessment, and detailed validation scoring.',
       icon: BarChart3,
       color: 'from-emerald-500 to-emerald-600',
       time: '3-5 minutes'
@@ -48,7 +48,7 @@ const ProcessSection = () => {
     {
       step: '04',
       title: 'Comprehensive Report',
-      description: 'Receive a detailed validation report with scores, recommendations, pitch deck, MVP roadmap, and actionable next steps.',
+      description: 'Receive a detailed validation report with actionable scores, strategic recommendations, professional pitch deck, MVP roadmap, and prioritized next steps.',
       icon: FileText,
       color: 'from-orange-500 to-orange-600',
       time: 'Instant delivery'
@@ -129,14 +129,14 @@ const ProcessSection = () => {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="relative group"
+                  className="relative group h-full"
                 >
-                  <div className="professional-card card-glow p-10 relative">
+                  <div className="professional-card card-glow p-8 relative h-full flex flex-col">
                     {/* Background decoration */}
                     <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-slate-50 to-transparent rounded-full transform translate-x-6 -translate-y-6" />
                     
                     {/* Step number */}
-                    <div className="text-6xl font-bold text-slate-100 absolute top-4 right-6 z-0">
+                    <div className="text-5xl font-bold text-slate-100 absolute top-4 right-6 z-0">
                       {step.step}
                     </div>
                     
@@ -147,17 +147,17 @@ const ProcessSection = () => {
                       </div>
                     </div>
                     
-                    {/* Content */}
-                    <div className="relative z-10">
-                      <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">
+                    {/* Content - flex-grow to push time indicator to bottom */}
+                    <div className="relative z-10 flex-grow flex flex-col">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">
                         {step.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed mb-6 text-balance font-medium">
+                      <p className="text-slate-600 leading-relaxed mb-6 text-sm font-medium flex-grow">
                         {step.description}
                       </p>
                       
-                      {/* Time indicator */}
-                      <div className="flex items-center gap-3 text-sm text-blue-600 font-semibold bg-blue-50 px-4 py-2 rounded-full w-fit">
+                      {/* Time indicator - always at bottom */}
+                      <div className="flex items-center gap-3 text-sm text-blue-600 font-semibold bg-blue-50 px-4 py-2 rounded-full w-fit mt-auto">
                         <Clock className="w-4 h-4" />
                         <span className="tracking-wide">{step.time}</span>
                       </div>
@@ -227,15 +227,7 @@ const ProcessSection = () => {
               })}
             </div>
             
-            <motion.button
-              onClick={openComingSoonModal}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary text-lg px-10 py-4 inline-flex items-center gap-2"
-            >
-              <span>Join Waitlist</span>
-              <ArrowRight className="w-5 h-5" />
-            </motion.button>
+
           </div>
         </motion.div>
       </div>

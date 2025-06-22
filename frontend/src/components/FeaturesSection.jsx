@@ -170,22 +170,7 @@ const FeaturesSection = () => {
           })}
         </motion.div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-center mt-16"
-        >
-          <motion.button
-            onClick={openComingSoonModal}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary text-lg px-10 py-4"
-          >
-            Join Waitlist
-          </motion.button>
-        </motion.div>
+
       </div>
     </section>
   );

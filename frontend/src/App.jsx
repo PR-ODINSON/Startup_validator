@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, CheckCircle, X, Mail, Bell } from 'lucide-react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import ComingSoonSection from './components/ComingSoonSection';
 import AIAgentsSection from './components/AIAgentsSection';
 import ProcessSection from './components/ProcessSection';
 import FeaturesSection from './components/FeaturesSection';
@@ -72,9 +73,9 @@ const ComingSoonModal = ({ showModal, setShowModal, email, setEmail, isSubmitted
                   >
                     <Sparkles className="w-8 h-8 text-white" />
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Coming Soon!</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Get Early Access!</h3>
                   <p className="text-slate-600">
-                    Be the first to know when we launch. Join our exclusive waitlist!
+                    Be the first to experience the future of startup validation. Join our exclusive waitlist!
                   </p>
                 </div>
 
@@ -99,7 +100,7 @@ const ComingSoonModal = ({ showModal, setShowModal, email, setEmail, isSubmitted
                     className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Bell className="w-5 h-5" />
-                    Join Waitlist
+                    Get Early Access
                   </motion.button>
                 </form>
 
@@ -170,6 +171,7 @@ function App() {
       <div className="App">
         <Navbar />
         <HeroSection />
+        <ComingSoonSection />
         <AIAgentsSection />
         <ProcessSection />
         <FeaturesSection />

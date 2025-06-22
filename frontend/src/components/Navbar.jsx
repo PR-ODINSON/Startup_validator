@@ -76,9 +76,9 @@ const Navbar = () => {
               transition={{ delay: 0.6, duration: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-primary"
+              className="btn-secondary text-sm px-6 py-2"
             >
-              Join Waitlist
+              Get Early Access
             </motion.button>
           </div>
 
@@ -127,9 +127,9 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4, duration: 0.3 }}
-                    className="btn-primary w-full"
+                    className="btn-secondary w-full text-sm"
                   >
-                    Join Waitlist
+                    Get Early Access
                   </motion.button>
                 </div>
               </div>

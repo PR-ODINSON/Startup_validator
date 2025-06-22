@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Zap, Target, TrendingUp } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Target, TrendingUp, Star, Rocket, Users, Award } from 'lucide-react';
 import { useComingSoon } from '../App';
 
 const HeroSection = () => {
@@ -14,7 +14,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-20 lg:pt-24">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
@@ -99,12 +99,12 @@ const HeroSection = () => {
               <span className="text-blue-600 font-semibold"> Turn weeks of research into minutes of actionable insights.</span>
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+              className="flex justify-center items-center mb-16"
             >
               <motion.button
                 onClick={openComingSoonModal}
@@ -112,76 +112,9 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
                 className="btn-primary flex items-center gap-2 group text-lg px-12 py-4"
               >
-                <span>Join Waitlist</span>
+                <span>Get Early Access</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
-              
-              {/* Coming Soon Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-sm font-semibold border border-orange-200"
-              >
-                <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                <span className="tracking-wide">Coming Soon</span>
-              </motion.div>
-            </motion.div>
-
-            {/* Coming Soon Features Preview */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="max-w-4xl mx-auto"
-            >
-              <div className="bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 rounded-3xl p-8 border border-blue-100 relative overflow-hidden">
-                {/* Animated background elements */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 via-purple-100/20 to-blue-100/20 animate-pulse"></div>
-                
-                <div className="relative z-10">
-                  <div className="text-center mb-6">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.8, duration: 0.6 }}
-                      className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg shadow-lg"
-                    >
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                      />
-                      <span>Coming Soon</span>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {[
-                      { value: '6', label: 'AI Agents Ready', icon: '🤖' },
-                      { value: '10min', label: 'Validation Time', icon: '⚡' },
-                      { value: '100%', label: 'Automated', icon: '🎯' },
-                      { value: 'Free', label: 'Early Access', icon: '🎉' }
-                    ].map((feature, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.9 + index * 0.1, duration: 0.6 }}
-                        className="text-center bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-white/40"
-                      >
-                        <div className="text-2xl mb-2">{feature.icon}</div>
-                        <div className="text-xl font-bold text-slate-900 mb-1">
-                          {feature.value}
-                        </div>
-                        <div className="text-xs text-slate-600 font-medium">
-                          {feature.label}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -206,8 +139,6 @@ const HeroSection = () => {
           />
         </motion.div>
       </motion.div>
-
-
     </section>
   );
 };
