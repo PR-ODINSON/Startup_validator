@@ -17,19 +17,19 @@ const TestimonialsSection = () => {
 
   const testimonials = [
     {
-      name: 'Sarah Chen',
-      tag: 'Y Combinator Alum',
-      quote: 'StartupX validated my SaaS idea in 2 minutes. The AI insights were spot-on and saved me weeks of research.',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+      name: 'Arjun P.',
+      tag: 'Hackathon Winner',
+      quote: 'Helped me refine my MVP pitch in 10 minutes. Love the AI breakdown!',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       company: 'TechFlow',
       gradient: 'from-orange-500 to-red-500'
     },
     {
-      name: 'Marcus Rodriguez',
-      tag: 'Hackathon Winner',
-      quote: 'The market analysis was incredibly detailed. I pivoted based on their recommendations and got funded!',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+      name: 'Sanya K.',
+      tag: 'Aspiring Founder',
+      quote: 'Saved me hours of research with just one click.',
+      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       company: 'InnovateLab',
       gradient: 'from-purple-500 to-indigo-500'
@@ -91,9 +91,9 @@ const TestimonialsSection = () => {
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-slate-900"
           >
-            Loved by{' '}
+            What{' '}
             <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
-              Entrepreneurs
+              Founders Say
             </span>
           </motion.h2>
           
@@ -101,7 +101,7 @@ const TestimonialsSection = () => {
             variants={itemVariants}
             className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
           >
-            Join hundreds of founders who've transformed their ideas into validated startups with StartupX.
+            Real feedback from founders who've transformed their ideas into validated startups with StartUpX.
           </motion.p>
         </motion.div>
 
@@ -210,7 +210,7 @@ const TestimonialsSection = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { value: '500+', label: 'Happy Founders', icon: Users },
+                { value: '200+', label: 'Happy Founders', icon: Users },
                 { value: '4.9/5', label: 'Average Rating', icon: Star },
                 { value: '98%', label: 'Would Recommend', icon: Award },
                 { value: '24/7', label: 'Support Available', icon: Sparkles }
