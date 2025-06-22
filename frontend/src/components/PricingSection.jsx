@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useComingSoon } from '../App';
+import { useComingSoon } from '../context/ComingSoonContext';
 import { Check, Star, Zap, Crown, Clock, Bell, Gift } from 'lucide-react';
 
 const PricingSection = () => {
@@ -221,8 +221,6 @@ const PricingSection = () => {
                       ))}
                     </ul>
                   </div>
-
-
 
                   {/* Decorative glow */}
                   <div className={`absolute -inset-1 bg-gradient-to-r ${feature.gradient} rounded-3xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`} />

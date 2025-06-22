@@ -1,0 +1,13 @@
+export { default as Navbar } from './Navbar';
+export { default as Footer } from './Footer';
+export { default as HeroSection } from './HeroSection';
+export { default as HowItWorks } from './HowItWorks';
+export { default as WhyChooseUsSection } from './WhyChooseUsSection';
+export { default as TestimonialsSection } from './TestimonialsSection';
+export { default as SubmitIdea } from './SubmitIdea';
+export { default as TypewriterEffect } from './TypewriterEffect';
+export { default as ProcessSection } from './ProcessSection';
+export { default as FeaturesSection } from './FeaturesSection';
+export { default as ComingSoonSection } from './ComingSoonSection';
+export { default as AIAgentsSection } from './AIAgentsSection';
+export { default as PricingSection } from './PricingSection'; 

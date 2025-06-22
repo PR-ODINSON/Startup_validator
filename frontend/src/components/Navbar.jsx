@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap } from 'lucide-react';
-import { useComingSoon } from '../App';
+import { Menu, X, Zap, ArrowLeft } from 'lucide-react';
+import { useComingSoon } from '../context/ComingSoonContext';
 import { handleSmoothScroll } from '../utils/smoothScroll';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { openComingSoonModal } = useComingSoon();
+  const { openComingSoonModal, navigateToPage, currentPage } = useComingSoon();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,11 +19,38 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
+    { name: 'Submit Idea', href: 'submit-idea', isPage: true },
     { name: 'How it Works', href: '#how-it-works' },
     { name: 'Why Choose Us', href: '#why-choose-us' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  // Filter out "Submit Idea" when on submit idea page
+  const filteredNavItems = currentPage === 'submit-idea' 
+    ? navItems.filter(item => item.href !== 'submit-idea')
+    : navItems;
+
+  const handleNavClick = (item, e) => {
+    if (item.isPage) {
+      e.preventDefault();
+      navigateToPage(item.href);
+      setIsMobileMenuOpen(false);
+    } else {
+      e.preventDefault();
+      // If we're on submit idea page, navigate to home first, then scroll to section
+      if (currentPage === 'submit-idea') {
+        navigateToPage('home');
+        // Wait for navigation to complete, then scroll to section
+        setTimeout(() => {
+          handleSmoothScroll(e, item.href);
+        }, 300);
+      } else {
+        handleSmoothScroll(e, item.href);
+      }
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <motion.nav
@@ -42,6 +69,7 @@ const Navbar = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-2 cursor-pointer"
+            onClick={() => navigateToPage('home')}
           >
             <div className="p-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg">
               <Zap className="w-6 h-6 text-white" />
@@ -53,15 +81,33 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
-            {navItems.map((item, index) => (
+            {/* Back to Home button when on submit idea page */}
+            {currentPage === 'submit-idea' && (
+              <motion.button
+                onClick={() => navigateToPage('home')}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Home
+              </motion.button>
+            )}
+            
+            {filteredNavItems.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
-                onClick={(e) => handleSmoothScroll(e, item.href)}
+                onClick={(e) => handleNavClick(item, e)}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-                className="text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 relative group cursor-pointer"
+                className={`text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 relative group cursor-pointer ${
+                  currentPage === item.href ? 'text-orange-600' : ''
+                }`}
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
@@ -110,18 +156,34 @@ const Navbar = () => {
           >
             <div className="container-custom py-4">
               <div className="flex flex-col gap-4">
-                {navItems.map((item, index) => (
+                {/* Back to Home button when on submit idea page */}
+                {currentPage === 'submit-idea' && (
+                  <motion.button
+                    onClick={() => {
+                      navigateToPage('home');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-center gap-2 text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 py-2"
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    Back to Home
+                  </motion.button>
+                )}
+                
+                {filteredNavItems.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
-                    onClick={(e) => {
-                      handleSmoothScroll(e, item.href);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 py-2 cursor-pointer"
+                    onClick={(e) => handleNavClick(item, e)}
+                    className={`text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 py-2 cursor-pointer ${
+                      currentPage === item.href ? 'text-orange-600' : ''
+                    }`}
                   >
                     {item.name}
                   </motion.a>

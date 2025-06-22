@@ -1,7 +1,10 @@
 // Ultra-smooth scrolling utility with custom easing
 export const smoothScrollTo = (targetId, duration = 1000, offset = 100) => {
   const target = document.getElementById(targetId);
-  if (!target) return;
+  if (!target) {
+    console.warn(`Target element with id "${targetId}" not found`);
+    return;
+  }
 
   const startPosition = window.pageYOffset;
   const targetPosition = target.offsetTop - offset;
@@ -29,10 +32,36 @@ export const smoothScrollTo = (targetId, duration = 1000, offset = 100) => {
   requestAnimationFrame(animation);
 };
 
-// Enhanced smooth scroll for anchor links
-export const handleSmoothScroll = (e, targetId) => {
+// Enhanced smooth scroll for anchor links with retry mechanism
+export const handleSmoothScroll = (e, targetId, maxRetries = 10) => {
   e.preventDefault();
-  smoothScrollTo(targetId.replace('#', ''), 800, 100);
+  const cleanTargetId = targetId.replace('#', '');
+  
+  // Try to scroll immediately
+  const target = document.getElementById(cleanTargetId);
+  if (target) {
+    smoothScrollTo(cleanTargetId, 800, 100);
+    return;
+  }
+
+  // If target doesn't exist, retry with increasing delays (for dynamic content)
+  let retryCount = 0;
+  const retryScroll = () => {
+    retryCount++;
+    const retryTarget = document.getElementById(cleanTargetId);
+    
+    if (retryTarget) {
+      smoothScrollTo(cleanTargetId, 800, 100);
+    } else if (retryCount < maxRetries) {
+      setTimeout(retryScroll, 100 * retryCount);
+    } else {
+      console.warn(`Target element with id "${cleanTargetId}" not found after ${maxRetries} retries`);
+      // Fallback: scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  setTimeout(retryScroll, 100);
 };
 
 // Auto-detect and enhance all anchor links

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useComingSoon } from '../App';
+import { useComingSoon } from '../context/ComingSoonContext';
 import { 
   Upload, 
   Brain, 

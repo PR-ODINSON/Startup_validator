@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, CheckCircle, Clock, Users, Star, TrendingUp } from 'lucide-react';
-import { useComingSoon } from '../App';
+import { useComingSoon } from '../context/ComingSoonContext';
 import TypewriterEffect from './TypewriterEffect';
 
 const HeroSection = () => {
-  const { openComingSoonModal } = useComingSoon();
+  const { openComingSoonModal, navigateToPage } = useComingSoon();
 
   const stats = [
     { icon: Users, value: '200+', label: 'Founders' },
@@ -81,10 +81,10 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="mb-12"
+              className="mb-12 flex flex-col sm:flex-row gap-4"
             >
               <motion.button
-                onClick={openComingSoonModal}
+                onClick={() => navigateToPage('submit-idea')}
                 whileHover={{ 
                   scale: 1.05, 
                   boxShadow: "0 20px 40px rgba(251, 146, 60, 0.4)" 
@@ -92,8 +92,21 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl text-lg shadow-xl transition-all duration-300 inline-flex items-center gap-3 group"
               >
-                <span>Get Started</span>
+                <span>Submit Your Idea</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+              
+              <motion.button
+                onClick={openComingSoonModal}
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)" 
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-50 font-bold px-6 py-3 rounded-xl text-lg shadow-xl transition-all duration-300 inline-flex items-center gap-3 group"
+              >
+                <span>Get Early Access</span>
+                <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
               </motion.button>
             </motion.div>
 

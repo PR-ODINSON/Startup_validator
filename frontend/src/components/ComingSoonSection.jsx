@@ -13,7 +13,7 @@ import {
   Shield,
   Target
 } from 'lucide-react';
-import { useComingSoon } from '../App';
+import { useComingSoon } from '../context/ComingSoonContext';
 
 const ComingSoonSection = () => {
   const [ref, inView] = useInView({
