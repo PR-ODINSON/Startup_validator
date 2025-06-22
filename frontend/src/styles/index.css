@@ -118,14 +118,14 @@
   }
   
   .btn-primary {
-    @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95;
+    @apply bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     letter-spacing: -0.01em;
   }
   
   .btn-secondary {
-    @apply bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95;
+    @apply bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-50 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-95;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     letter-spacing: -0.01em;
@@ -181,13 +181,13 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3b82f6, #1e40af);
+    background: linear-gradient(180deg, #f97316, #dc2626);
     border-radius: 4px;
     transition: background 0.3s ease;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #2563eb, #1d4ed8);
+    background: linear-gradient(180deg, #ea580c, #b91c1c);
   }
   
   .container-custom {

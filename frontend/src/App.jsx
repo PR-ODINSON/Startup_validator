@@ -4,11 +4,9 @@ import { Sparkles, CheckCircle, X, Mail, Bell } from 'lucide-react';
 import { initSmoothScrolling } from './utils/smoothScroll';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import ComingSoonSection from './components/ComingSoonSection';
-import AIAgentsSection from './components/AIAgentsSection';
 import ProcessSection from './components/ProcessSection';
-import FeaturesSection from './components/FeaturesSection';
-import PricingSection from './components/PricingSection';
+import WhyChooseUsSection from './components/WhyChooseUsSection';
+import TestimonialsSection from './components/TestimonialsSection';
 import Footer from './components/Footer';
 
 // Create context for the coming soon modal
@@ -177,11 +175,9 @@ function App() {
       <div className="App">
         <Navbar />
         <HeroSection />
-        <ComingSoonSection />
-        <AIAgentsSection />
         <ProcessSection />
-        <FeaturesSection />
-        <PricingSection />
+        <WhyChooseUsSection />
+        <TestimonialsSection />
         <Footer />
         
         {/* Global Coming Soon Modal */}

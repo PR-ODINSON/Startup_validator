@@ -5,12 +5,11 @@ import { useComingSoon } from '../App';
 import { 
   Upload, 
   Brain, 
-  BarChart3, 
-  FileText,
+  Download,
   ArrowRight,
-  Clock,
-  CheckCircle,
-  Zap
+  Sparkles,
+  Zap,
+  Target
 } from 'lucide-react';
 
 const ProcessSection = () => {
@@ -24,34 +23,26 @@ const ProcessSection = () => {
     {
       step: '01',
       title: 'Submit Your Idea',
-      description: 'Upload your startup idea via text, PDF, or connect your Notion workspace. Our system securely processes your information with enterprise-grade security.',
+      description: 'Share your startup concept in seconds',
       icon: Upload,
-      color: 'from-blue-500 to-blue-600',
-      time: '30 seconds'
+      color: 'from-orange-500 to-red-500',
+      bgColor: 'from-orange-50 to-red-50'
     },
     {
       step: '02',
-      title: 'AI Agents Activate',
-      description: 'Six specialized AI agents simultaneously analyze your idea from different expert perspectives - market research, investment analysis, product strategy, and more.',
+      title: 'Let AI Agents Analyze',
+      description: 'Our 6 AI experts evaluate your concept',
       icon: Brain,
-      color: 'from-purple-500 to-purple-600',
-      time: '2-3 minutes'
+      color: 'from-purple-500 to-indigo-500',
+      bgColor: 'from-purple-50 to-indigo-50'
     },
     {
       step: '03',
-      title: 'Deep Analysis',
-      description: 'Each agent conducts comprehensive research including market sizing, competitor analysis, financial modeling, risk assessment, and detailed validation scoring.',
-      icon: BarChart3,
-      color: 'from-emerald-500 to-emerald-600',
-      time: '3-5 minutes'
-    },
-    {
-      step: '04',
-      title: 'Comprehensive Report',
-      description: 'Receive a detailed validation report with actionable scores, strategic recommendations, professional pitch deck, MVP roadmap, and prioritized next steps.',
-      icon: FileText,
-      color: 'from-orange-500 to-orange-600',
-      time: 'Instant delivery'
+      title: 'Get a Downloadable Report',
+      description: 'Receive actionable insights instantly',
+      icon: Download,
+      color: 'from-teal-500 to-cyan-500',
+      bgColor: 'from-teal-50 to-cyan-50'
     }
   ];
 
@@ -60,36 +51,38 @@ const ProcessSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.3
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.8,
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   };
 
   return (
-    <section id="how-it-works" className="section-padding bg-gradient-to-b from-white to-blue-50">
+    <section id="how-it-works" className="section-padding bg-gradient-to-b from-white to-slate-50">
       <div className="container-custom">
+        {/* Header */}
         <motion.div
           ref={ref}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-sm font-semibold mb-6"
           >
             <Zap className="w-4 h-4" />
             <span>How It Works</span>
@@ -97,22 +90,23 @@ const ProcessSection = () => {
           
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-slate-900"
           >
-            From Idea to{' '}
-            <span className="gradient-text">Validation</span>{' '}
-            in Minutes
+            Get Validated in{' '}
+            <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+              3 Simple Steps
+            </span>
           </motion.h2>
           
           <motion.p
             variants={itemVariants}
             className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
           >
-            Our streamlined AI-powered process transforms weeks of manual research into minutes of expert analysis. Here's how your startup validation journey works.
+            Our AI-powered validation process transforms your startup idea into actionable insights in under 2 minutes.
           </motion.p>
         </motion.div>
 
-        {/* Process Steps */}
+        {/* Process Steps - Horizontal Layout */}
         <motion.div
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -120,57 +114,59 @@ const ProcessSection = () => {
           className="relative"
         >
           {/* Connection Line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-purple-200 via-emerald-200 to-orange-200 transform -translate-y-1/2 z-0" />
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-orange-200 via-purple-200 to-teal-200 transform -translate-y-1/2 z-0 rounded-full" />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 relative z-10">
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="relative group h-full"
+                  whileHover={{ 
+                    y: -10,
+                    transition: { duration: 0.3, ease: "easeOut" }
+                  }}
+                  className="relative group"
                 >
-                  <div className="professional-card card-glow p-8 relative h-full flex flex-col">
-                    {/* Background decoration */}
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-slate-50 to-transparent rounded-full transform translate-x-6 -translate-y-6" />
-                    
-                    {/* Step number */}
-                    <div className="text-5xl font-bold text-slate-100 absolute top-4 right-6 z-0">
+                  <div className={`relative bg-gradient-to-br ${step.bgColor} p-8 lg:p-10 rounded-3xl border border-white shadow-xl hover:shadow-2xl transition-all duration-500 h-full`}>
+                    {/* Step Number */}
+                    <div className="absolute top-6 right-6 text-5xl font-black text-slate-100 select-none">
                       {step.step}
                     </div>
                     
                     {/* Icon */}
-                    <div className="relative z-10 mb-6">
-                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${step.color} shadow-lg`}>
-                        <Icon className="w-8 h-8 text-white" />
+                    <div className="relative z-10 mb-8">
+                      <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-r ${step.color} shadow-xl transform group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-10 h-10 text-white" />
                       </div>
                     </div>
                     
-                    {/* Content - flex-grow to push time indicator to bottom */}
-                    <div className="relative z-10 flex-grow flex flex-col">
-                      <h3 className="text-xl font-bold text-slate-900 mb-4 tracking-tight">
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 tracking-tight">
                         {step.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed mb-6 text-sm font-medium flex-grow">
+                      <p className="text-lg text-slate-600 leading-relaxed font-medium">
                         {step.description}
                       </p>
-                      
-                      {/* Time indicator - always at bottom */}
-                      <div className="flex items-center gap-3 text-sm text-blue-600 font-semibold bg-blue-50 px-4 py-2 rounded-full w-fit mt-auto">
-                        <Clock className="w-4 h-4" />
-                        <span className="tracking-wide">{step.time}</span>
-                      </div>
                     </div>
 
                     {/* Arrow for large screens */}
                     {index < steps.length - 1 && (
-                      <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
-                        <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center border border-slate-200">
-                          <ArrowRight className="w-4 h-4 text-slate-400" />
-                        </div>
+                      <div className="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2 z-20">
+                        <motion.div
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          className="w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-slate-100"
+                        >
+                          <ArrowRight className="w-6 h-6 text-slate-400" />
+                        </motion.div>
                       </div>
                     )}
+
+                    {/* Hover Glow Effect */}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${step.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
                   </div>
                 </motion.div>
               );
@@ -178,56 +174,50 @@ const ProcessSection = () => {
           </div>
         </motion.div>
 
-        {/* Bottom section with benefits */}
+        {/* Bottom CTA Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-20 text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="text-center mt-20"
         >
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12 border border-blue-100">
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-              Why Choose AI-Powered Validation?
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              {[
-                {
-                  icon: Clock,
-                  title: 'Save 40+ Hours',
-                  description: 'Traditional validation takes weeks. Get comprehensive analysis in under 10 minutes.'
-                },
-                {
-                  icon: Brain,
-                  title: 'Expert-Level Insights',
-                  description: 'Access to 6 specialized AI agents trained on thousands of successful startups.'
-                },
-                {
-                  icon: CheckCircle,
-                  title: '87% Accuracy Rate',
-                  description: 'Our AI predictions have been validated against real startup outcomes.'
-                }
-              ].map((benefit, index) => {
-                const Icon = benefit.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
-                    className="text-center"
-                  >
-                    <div className="inline-flex p-3 rounded-xl bg-white shadow-lg mb-4">
-                      <Icon className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <h4 className="font-bold text-slate-900 mb-2">{benefit.title}</h4>
-                    <p className="text-slate-600 text-sm">{benefit.description}</p>
-                  </motion.div>
-                );
-              })}
+          <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-12 relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              }}></div>
             </div>
-            
 
+            <div className="relative z-10">
+              <div className="flex items-center justify-center mb-6">
+                <Sparkles className="w-8 h-8 text-orange-400 mr-3" />
+                <h3 className="text-3xl lg:text-4xl font-bold text-white">
+                  Ready to Validate Your Idea?
+                </h3>
+              </div>
+              
+              <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                Join 500+ founders who've already validated their startup ideas with StartupX
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div className="flex items-center gap-4 text-slate-300">
+                  <div className="flex items-center gap-2">
+                    <Target className="w-5 h-5 text-green-400" />
+                    <span>2-minute process</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-orange-400" />
+                    <span>AI-powered insights</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Download className="w-5 h-5 text-teal-400" />
+                    <span>Instant download</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

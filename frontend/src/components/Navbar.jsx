@@ -19,10 +19,10 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'AI Agents', href: '#ai-agents' },
     { name: 'How it Works', href: '#how-it-works' },
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'Why Choose Us', href: '#why-choose-us' },
+    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -43,11 +43,11 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-2 cursor-pointer"
           >
-            <div className="p-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg">
+            <div className="p-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg">
               <Zap className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold text-slate-900">
-              Startup<span className="text-blue-600">Validator</span>
+              Startup<span className="text-orange-500">X</span>
             </span>
           </motion.div>
 
@@ -61,10 +61,10 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-                className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group cursor-pointer"
+                className="text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 relative group cursor-pointer"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
           </div>
@@ -91,7 +91,7 @@ const Navbar = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-blue-600 transition-colors duration-200"
+            className="lg:hidden p-2 text-slate-700 hover:text-orange-600 transition-colors duration-200"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </motion.button>
@@ -121,7 +121,7 @@ const Navbar = () => {
                       handleSmoothScroll(e, item.href);
                       setIsMobileMenuOpen(false);
                     }}
-                    className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2 cursor-pointer"
+                    className="text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 py-2 cursor-pointer"
                   >
                     {item.name}
                   </motion.a>
