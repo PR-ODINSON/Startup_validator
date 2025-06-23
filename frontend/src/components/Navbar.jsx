@@ -3,11 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Zap, ArrowLeft } from 'lucide-react';
 import { useComingSoon } from '../context/ComingSoonContext';
 import { handleSmoothScroll } from '../utils/smoothScroll';
+import { ThemeToggle } from './index';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { openComingSoonModal, navigateToPage, currentPage } = useComingSoon();
+  const { navigateToPage, currentPage } = useComingSoon();
+
+  console.log('Navbar rendered');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +62,7 @@ const Navbar = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'glass-effect shadow-lg backdrop-blur-md' 
+          ? 'glass-effect shadow-lg backdrop-blur-md dark:bg-slate-900/80 dark:border-slate-700/50' 
           : 'bg-transparent'
       }`}
     >
@@ -74,7 +77,7 @@ const Navbar = () => {
             <div className="p-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg">
               <Zap className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-slate-900">
+            <span className="text-xl font-bold text-slate-900 dark:text-white">
               Startup<span className="text-orange-500">X</span>
             </span>
           </motion.div>
@@ -90,7 +93,7 @@ const Navbar = () => {
                 transition={{ duration: 0.6 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200"
+                className="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors duration-200"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Home
@@ -105,28 +108,44 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-                className={`text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 relative group cursor-pointer ${
-                  currentPage === item.href ? 'text-orange-600' : ''
+                className={`text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors duration-200 relative group cursor-pointer ${
+                  currentPage === item.href ? 'text-orange-600 dark:text-orange-400' : ''
                 }`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 dark:bg-orange-400 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
           </div>
 
-          {/* Desktop CTA Button */}
-          <div className="hidden lg:flex items-center">
+          {/* Desktop Auth Buttons */}
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Theme Toggle */}
+            <div className="relative">
+              <ThemeToggle />
+            </div>
+            
             <motion.button
-              onClick={openComingSoonModal}
+              onClick={() => navigateToPage('login')}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-secondary text-sm px-6 py-2"
+              className="text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors duration-200"
             >
-              Get Early Access
+              Login
+            </motion.button>
+            <motion.button
+              onClick={() => navigateToPage('signup')}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Sign Up
             </motion.button>
           </div>
 
@@ -137,7 +156,7 @@ const Navbar = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-orange-600 transition-colors duration-200"
+            className="lg:hidden p-2 text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-200"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </motion.button>
@@ -152,7 +171,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden glass-effect border-t border-white/20"
+            className="lg:hidden glass-effect border-t border-white/20 dark:border-slate-700/50 dark:bg-slate-900/80"
           >
             <div className="container-custom py-4">
               <div className="flex flex-col gap-4">
@@ -166,7 +185,7 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="flex items-center gap-2 text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 py-2"
+                    className="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors duration-200 py-2"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Home
@@ -181,22 +200,49 @@ const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                     onClick={(e) => handleNavClick(item, e)}
-                    className={`text-slate-700 hover:text-orange-600 font-medium transition-colors duration-200 py-2 cursor-pointer ${
-                      currentPage === item.href ? 'text-orange-600' : ''
+                    className={`text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors duration-200 py-2 cursor-pointer ${
+                      currentPage === item.href ? 'text-orange-600 dark:text-orange-400' : ''
                     }`}
                   >
                     {item.name}
                   </motion.a>
                 ))}
-                <div className="pt-4 border-t border-slate-200">
+                
+                {/* Mobile Auth Buttons */}
+                <div className="pt-4 border-t border-slate-200 dark:border-slate-700 space-y-3">
+                  {/* Theme Toggle for Mobile */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3, duration: 0.3 }}
+                    className="flex justify-center"
+                  >
+                    <ThemeToggle />
+                  </motion.div>
+                  
                   <motion.button
-                    onClick={openComingSoonModal}
+                    onClick={() => {
+                      navigateToPage('login');
+                      setIsMobileMenuOpen(false);
+                    }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4, duration: 0.3 }}
-                    className="btn-secondary w-full text-sm"
+                    className="w-full text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium py-2 text-left"
                   >
-                    Get Early Access
+                    Login
+                  </motion.button>
+                  <motion.button
+                    onClick={() => {
+                      navigateToPage('signup');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5, duration: 0.3 }}
+                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300"
+                  >
+                    Sign Up
                   </motion.button>
                 </div>
               </div>

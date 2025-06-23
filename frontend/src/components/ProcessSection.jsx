@@ -26,7 +26,9 @@ const ProcessSection = () => {
       description: 'Share your startup concept in seconds',
       icon: Upload,
       color: 'from-orange-500 to-red-500',
-      bgColor: 'from-orange-50 to-red-50'
+      darkColor: 'dark:from-accent dark:to-red-500',
+      bgColor: 'from-orange-50 to-red-50',
+      darkBgColor: 'dark:from-neutral-dark dark:to-slate-800'
     },
     {
       step: '02',
@@ -34,7 +36,9 @@ const ProcessSection = () => {
       description: 'Our 6 AI experts evaluate your concept',
       icon: Brain,
       color: 'from-purple-500 to-indigo-500',
-      bgColor: 'from-purple-50 to-indigo-50'
+      darkColor: 'dark:from-secondary dark:to-indigo-500',
+      bgColor: 'from-purple-50 to-indigo-50',
+      darkBgColor: 'dark:from-neutral-dark dark:to-slate-800'
     },
     {
       step: '03',
@@ -42,7 +46,9 @@ const ProcessSection = () => {
       description: 'Receive actionable insights instantly',
       icon: Download,
       color: 'from-teal-500 to-cyan-500',
-      bgColor: 'from-teal-50 to-cyan-50'
+      darkColor: 'dark:from-primary dark:to-cyan-500',
+      bgColor: 'from-teal-50 to-cyan-50',
+      darkBgColor: 'dark:from-neutral-dark dark:to-slate-800'
     }
   ];
 
@@ -70,7 +76,7 @@ const ProcessSection = () => {
   };
 
   return (
-    <section id="how-it-works" className="section-padding bg-gradient-to-b from-white to-slate-50">
+    <section id="how-it-works" className="section-padding bg-gradient-to-b from-white to-slate-50 dark:from-neutral-dark dark:to-slate-900">
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -82,7 +88,7 @@ const ProcessSection = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-sm font-semibold mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-100 to-red-100 dark:from-accent/20 dark:to-red-900/50 text-orange-700 dark:text-accent text-sm font-semibold mb-6"
           >
             <Zap className="w-4 h-4" />
             <span>How It Works</span>
@@ -90,17 +96,17 @@ const ProcessSection = () => {
           
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-slate-900"
+            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-slate-900 dark:text-neutral-light"
           >
             Get Validated in{' '}
-            <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-orange-500 to-red-500 dark:from-accent dark:to-red-500 bg-clip-text text-transparent">
               3 Simple Steps
             </span>
           </motion.h2>
           
           <motion.p
             variants={itemVariants}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed"
           >
             Our AI-powered validation process transforms your startup idea into actionable insights in under 2 minutes.
           </motion.p>
@@ -114,7 +120,7 @@ const ProcessSection = () => {
           className="relative"
         >
           {/* Connection Line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-orange-200 via-purple-200 to-teal-200 transform -translate-y-1/2 z-0 rounded-full" />
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-orange-200 via-purple-200 to-teal-200 dark:from-accent/50 dark:via-secondary/50 dark:to-primary/50 transform -translate-y-1/2 z-0 rounded-full" />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 relative z-10">
             {steps.map((step, index) => {
@@ -129,25 +135,25 @@ const ProcessSection = () => {
                   }}
                   className="relative group"
                 >
-                  <div className={`relative bg-gradient-to-br ${step.bgColor} p-8 lg:p-10 rounded-3xl border border-white shadow-xl hover:shadow-2xl transition-all duration-500 h-full`}>
+                  <div className={`relative bg-gradient-to-br ${step.bgColor} ${step.darkBgColor} p-8 lg:p-10 rounded-3xl border border-white dark:border-slate-800 shadow-xl hover:shadow-2xl transition-all duration-500 h-full`}>
                     {/* Step Number */}
-                    <div className="absolute top-6 right-6 text-5xl font-black text-slate-100 select-none">
+                    <div className="absolute top-6 right-6 text-5xl font-black text-slate-100 dark:text-slate-800 select-none">
                       {step.step}
                     </div>
                     
                     {/* Icon */}
                     <div className="relative z-10 mb-8">
-                      <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-r ${step.color} shadow-xl transform group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-r ${step.color} ${step.darkColor} shadow-xl transform group-hover:scale-110 transition-transform duration-300`}>
                         <Icon className="w-10 h-10 text-white" />
                       </div>
                     </div>
                     
                     {/* Content */}
                     <div className="relative z-10">
-                      <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+                      <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-neutral-light mb-4 tracking-tight">
                         {step.title}
                       </h3>
-                      <p className="text-lg text-slate-600 leading-relaxed font-medium">
+                      <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
                         {step.description}
                       </p>
                     </div>
@@ -158,15 +164,15 @@ const ProcessSection = () => {
                         <motion.div
                           animate={{ x: [0, 5, 0] }}
                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          className="w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-slate-100"
+                          className="w-12 h-12 bg-white dark:bg-slate-800 rounded-full shadow-xl flex items-center justify-center border-2 border-slate-100 dark:border-slate-700"
                         >
-                          <ArrowRight className="w-6 h-6 text-slate-400" />
+                          <ArrowRight className="w-6 h-6 text-slate-400 dark:text-slate-500" />
                         </motion.div>
                       </div>
                     )}
 
                     {/* Hover Glow Effect */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${step.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
+                    <div className={`absolute inset-0 bg-gradient-to-r ${step.color} ${step.darkColor} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
                   </div>
                 </motion.div>
               );
@@ -181,7 +187,7 @@ const ProcessSection = () => {
           transition={{ delay: 1.2, duration: 0.8 }}
           className="text-center mt-20"
         >
-          <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-12 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-neutral-dark dark:to-slate-900 rounded-3xl p-12 relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
@@ -191,7 +197,7 @@ const ProcessSection = () => {
 
             <div className="relative z-10">
               <div className="flex items-center justify-center mb-6">
-                <Sparkles className="w-8 h-8 text-orange-400 mr-3" />
+                <Sparkles className="w-8 h-8 text-orange-400 dark:text-accent mr-3" />
                 <h3 className="text-3xl lg:text-4xl font-bold text-white">
                   Ready to Validate Your Idea?
                 </h3>
@@ -204,15 +210,15 @@ const ProcessSection = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <div className="flex items-center gap-4 text-slate-300">
                   <div className="flex items-center gap-2">
-                    <Target className="w-5 h-5 text-green-400" />
+                    <Target className="w-5 h-5 text-green-400 dark:text-primary" />
                     <span>2-minute process</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-orange-400" />
+                    <Sparkles className="w-5 h-5 text-orange-400 dark:text-accent" />
                     <span>AI-powered insights</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Download className="w-5 h-5 text-teal-400" />
+                    <Download className="w-5 h-5 text-teal-400 dark:text-primary" />
                     <span>Instant download</span>
                   </div>
                 </div>

@@ -10,4 +10,5 @@ export { default as ProcessSection } from './ProcessSection';
 export { default as FeaturesSection } from './FeaturesSection';
 export { default as ComingSoonSection } from './ComingSoonSection';
 export { default as AIAgentsSection } from './AIAgentsSection';
-export { default as PricingSection } from './PricingSection'; 
+export { default as PricingSection } from './PricingSection';
+export { default as ThemeToggle } from './ThemeToggle'; 

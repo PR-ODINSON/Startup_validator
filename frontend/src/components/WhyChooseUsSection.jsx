@@ -26,8 +26,11 @@ const WhyChooseUsSection = () => {
       subtitle: 'Results in under 2 mins',
       description: 'Get comprehensive startup validation faster than making coffee. Our AI processes your idea instantly.',
       color: 'from-orange-500 to-red-500',
+      darkColor: 'from-accent to-red-500',
       bgColor: 'from-orange-50 to-red-50',
+      darkBgColor: 'dark:from-neutral-dark dark:to-slate-800',
       borderColor: 'border-orange-200',
+      darkBorderColor: 'dark:border-slate-700',
       stats: [
         { label: 'Average Time', value: '1.8 min' },
         { label: 'Success Rate', value: '95%' }
@@ -39,8 +42,11 @@ const WhyChooseUsSection = () => {
       subtitle: 'Simulated feedback from 6 AI agents',
       description: 'Market researchers, investors, product managers, and pitch specialists analyze your startup idea.',
       color: 'from-purple-500 to-indigo-500',
+      darkColor: 'from-secondary to-indigo-500',
       bgColor: 'from-purple-50 to-indigo-50',
+      darkBgColor: 'dark:from-neutral-dark dark:to-slate-800',
       borderColor: 'border-purple-200',
+      darkBorderColor: 'dark:border-slate-700',
       stats: [
         { label: 'AI Agents', value: '6' },
         { label: 'Data Points', value: '50+' }
@@ -52,8 +58,11 @@ const WhyChooseUsSection = () => {
       subtitle: 'Includes SWOT, TAM/SAM/SOM, GTM',
       description: 'Detailed market analysis, competitive landscape, financial projections, and go-to-market strategies.',
       color: 'from-teal-500 to-cyan-500',
+      darkColor: 'from-primary to-cyan-500',
       bgColor: 'from-teal-50 to-cyan-50',
+      darkBgColor: 'dark:from-neutral-dark dark:to-slate-800',
       borderColor: 'border-teal-200',
+      darkBorderColor: 'dark:border-slate-700',
       stats: [
         { label: 'Report Pages', value: '15+' },
         { label: 'Metrics', value: '25+' }
@@ -85,7 +94,7 @@ const WhyChooseUsSection = () => {
   };
 
   return (
-    <section id="why-choose-us" className="section-padding bg-gradient-to-b from-slate-50 to-white">
+    <section id="why-choose-us" className="section-padding bg-gradient-to-b from-slate-50 to-white dark:from-neutral-dark dark:to-slate-900">
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -97,7 +106,7 @@ const WhyChooseUsSection = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-700 text-sm font-semibold mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-secondary/20 dark:to-indigo-900/50 text-purple-700 dark:text-secondary text-sm font-semibold mb-6"
           >
             <Target className="w-4 h-4" />
             <span>Why Choose StartupX?</span>
@@ -105,17 +114,17 @@ const WhyChooseUsSection = () => {
           
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-slate-900"
+            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-slate-900 dark:text-neutral-light"
           >
             Built for{' '}
-            <span className="bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-purple-500 to-indigo-500 dark:from-secondary dark:to-indigo-500 bg-clip-text text-transparent">
               Modern Founders
             </span>
           </motion.h2>
           
           <motion.p
             variants={itemVariants}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed"
           >
             We've reimagined startup validation for the AI era. Get insights that traditionally take weeks in just minutes.
           </motion.p>
@@ -140,23 +149,23 @@ const WhyChooseUsSection = () => {
                 }}
                 className="relative group"
               >
-                <div className={`relative bg-gradient-to-br ${feature.bgColor} p-8 lg:p-10 rounded-3xl border-2 ${feature.borderColor} shadow-xl hover:shadow-2xl transition-all duration-500 h-full`}>
+                <div className={`relative bg-gradient-to-br ${feature.bgColor} ${feature.darkBgColor} p-8 lg:p-10 rounded-3xl border-2 ${feature.borderColor} ${feature.darkBorderColor} shadow-xl hover:shadow-2xl transition-all duration-500 h-full`}>
                   {/* Icon */}
                   <div className="relative z-10 mb-8">
-                    <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-r ${feature.color} shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                    <div className={`inline-flex p-6 rounded-2xl bg-gradient-to-r ${feature.color} dark:${feature.darkColor} shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
                       <Icon className="w-10 h-10 text-white" />
                     </div>
                   </div>
                   
                   {/* Content */}
                   <div className="relative z-10 mb-8">
-                    <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3 tracking-tight">
+                    <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-neutral-light mb-3 tracking-tight">
                       {feature.title}
                     </h3>
-                    <p className="text-lg font-semibold text-slate-700 mb-4">
+                    <p className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">
                       {feature.subtitle}
                     </p>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -164,11 +173,11 @@ const WhyChooseUsSection = () => {
                   {/* Stats */}
                   <div className="relative z-10 grid grid-cols-2 gap-4">
                     {feature.stats.map((stat, statIndex) => (
-                      <div key={statIndex} className="text-center bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-white/50">
-                        <div className="text-2xl font-bold text-slate-900 mb-1">
+                      <div key={statIndex} className="text-center bg-white/70 dark:bg-slate-700/50 backdrop-blur-sm p-4 rounded-xl border border-white/50 dark:border-slate-600/50">
+                        <div className="text-2xl font-bold text-slate-900 dark:text-neutral-light mb-1">
                           {stat.value}
                         </div>
-                        <div className="text-sm text-slate-600 font-medium">
+                        <div className="text-sm text-slate-600 dark:text-slate-400 font-medium">
                           {stat.label}
                         </div>
                       </div>
@@ -176,7 +185,7 @@ const WhyChooseUsSection = () => {
                   </div>
 
                   {/* Hover Glow Effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`} />
+                  <div className={`absolute inset-0 bg-gradient-to-r ${feature.color} dark:${feature.darkColor} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`} />
                   
                   {/* Floating Badge */}
                   <motion.div
@@ -190,9 +199,9 @@ const WhyChooseUsSection = () => {
                       ease: "easeInOut",
                       delay: index * 0.5
                     }}
-                    className="absolute -top-3 -right-3 bg-white p-2 rounded-full shadow-lg border-2 border-slate-100"
+                    className="absolute -top-3 -right-3 bg-white dark:bg-slate-800 p-2 rounded-full shadow-lg border-2 border-slate-100 dark:border-slate-700"
                   >
-                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <CheckCircle className="w-5 h-5 text-green-500 dark:text-primary" />
                   </motion.div>
                 </div>
               </motion.div>
@@ -207,7 +216,7 @@ const WhyChooseUsSection = () => {
           transition={{ delay: 1, duration: 0.8 }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 rounded-3xl p-12 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 dark:from-neutral-dark dark:via-secondary/20 dark:to-slate-900 rounded-3xl p-12 relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0">
               <div className="absolute top-10 left-10 w-32 h-32 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"></div>
@@ -219,7 +228,7 @@ const WhyChooseUsSection = () => {
                 <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                   Trusted by 500+ Founders
                 </h3>
-                <p className="text-xl text-slate-300">
+                <p className="text-xl text-slate-300 dark:text-slate-400">
                   Join the community of validated entrepreneurs
                 </p>
               </div>
@@ -228,7 +237,7 @@ const WhyChooseUsSection = () => {
                 {[
                   { icon: Users, value: '500+', label: 'Founders Validated' },
                   { icon: Clock, value: '1.8 min', label: 'Avg. Validation Time' },
-                  { icon: TrendingUp, value: '87%', label: 'Success Rate' },
+                  { icon: TrendingUp, value: '95%', label: 'Success Rate' },
                   { icon: Shield, value: '100%', label: 'Data Security' }
                 ].map((stat, index) => {
                   const Icon = stat.icon;
@@ -241,13 +250,13 @@ const WhyChooseUsSection = () => {
                       whileHover={{ scale: 1.1 }}
                       className="group cursor-pointer"
                     >
-                      <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 shadow-lg mb-4 group-hover:shadow-purple-500/50 transition-all duration-300">
+                      <div className="inline-flex p-4 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 dark:from-secondary dark:to-indigo-500 shadow-lg mb-4 group-hover:shadow-purple-500/50 transition-all duration-300">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                       <div className="text-3xl lg:text-4xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
                         {stat.value}
                       </div>
-                      <div className="text-slate-300 text-sm font-medium">
+                      <div className="text-slate-300 dark:text-slate-400 text-sm font-medium">
                         {stat.label}
                       </div>
                     </motion.div>

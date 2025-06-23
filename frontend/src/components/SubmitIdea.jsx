@@ -333,7 +333,7 @@ const SubmitIdea = () => {
               variants={itemVariants}
               className="text-2xl md:text-3xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium"
             >
-              Get an AI-powered validation report in under 2 minutes. Used by 200+ founders to validate their ideas.
+              Get an AI-powered validation report in under 2 minutes. Used by 500+ founders to validate their ideas.
             </motion.p>
 
             {/* Floating Icons */}
@@ -374,10 +374,17 @@ const SubmitIdea = () => {
                   scale: 1.02,
                   boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
                 }}
-                className="bg-white rounded-3xl p-10 shadow-2xl border border-slate-100 relative overflow-hidden"
+                className="bg-gradient-to-br from-white via-slate-50 to-white dark:from-slate-800 dark:via-slate-700 dark:to-slate-800 rounded-3xl p-10 shadow-2xl border border-slate-100 dark:border-slate-700 relative overflow-hidden backdrop-blur-sm"
               >
                 {/* Form background glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 via-white to-red-50/50 rounded-3xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-white to-red-50/30 dark:from-orange-900/20 dark:via-slate-800 dark:to-red-900/20 rounded-3xl" />
+                
+                {/* Subtle background pattern */}
+                <div className="absolute inset-0 opacity-5">
+                  <div className="absolute inset-0" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                  }}></div>
+                </div>
                 
                 <div className="relative z-10">
                   <motion.div

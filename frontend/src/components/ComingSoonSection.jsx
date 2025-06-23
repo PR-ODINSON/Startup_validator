@@ -32,14 +32,14 @@ const ComingSoonSection = () => {
     },
     {
       icon: Zap,
-      title: '10 Minutes',
+      title: 'Under 2 Mins',
       subtitle: 'Lightning Fast',
-      description: 'Complete startup validation in under 10 minutes vs weeks of manual work',
+      description: 'Complete startup validation in under 2 minutes vs weeks of manual work',
       color: 'from-yellow-500 to-orange-500'
     },
     {
       icon: Award,
-      title: '95% Accuracy',
+      title: '95% Success Rate',
       subtitle: 'Proven Results',
       description: 'Trained on 10,000+ successful startups and validated predictions',
       color: 'from-purple-500 to-pink-500'
@@ -55,9 +55,9 @@ const ComingSoonSection = () => {
 
   const stats = [
     { number: '10,000+', label: 'Startups Analyzed', icon: TrendingUp },
-    { number: '95%', label: 'Accuracy Rate', icon: Target },
+    { number: '95%', label: 'Success Rate', icon: Target },
     { number: '6', label: 'AI Specialists', icon: Users },
-    { number: '10min', label: 'Average Time', icon: Clock }
+    { number: '1.8 min', label: 'Average Time', icon: Clock }
   ];
 
   const containerVariants = {

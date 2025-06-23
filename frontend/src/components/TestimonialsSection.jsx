@@ -23,7 +23,8 @@ const TestimonialsSection = () => {
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       company: 'TechFlow',
-      gradient: 'from-orange-500 to-red-500'
+      gradient: 'from-orange-500 to-red-500',
+      darkGradient: 'dark:from-accent dark:to-red-500'
     },
     {
       name: 'Sanya K.',
@@ -32,7 +33,8 @@ const TestimonialsSection = () => {
       avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       company: 'InnovateLab',
-      gradient: 'from-purple-500 to-indigo-500'
+      gradient: 'from-purple-500 to-indigo-500',
+      darkGradient: 'dark:from-secondary dark:to-indigo-500'
     },
     {
       name: 'Emily Johnson',
@@ -41,7 +43,8 @@ const TestimonialsSection = () => {
       avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
       rating: 5,
       company: 'GrowthHack',
-      gradient: 'from-teal-500 to-cyan-500'
+      gradient: 'from-teal-500 to-cyan-500',
+      darkGradient: 'dark:from-primary dark:to-cyan-500'
     }
   ];
 
@@ -69,7 +72,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" className="section-padding bg-gradient-to-b from-white to-slate-50">
+    <section id="testimonials" className="section-padding bg-gradient-to-b from-white to-slate-50 dark:from-neutral-dark dark:to-gray-900">
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -81,7 +84,7 @@ const TestimonialsSection = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-teal-100 to-cyan-100 text-teal-700 text-sm font-semibold mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-teal-100 to-cyan-100 dark:from-primary/20 dark:to-cyan-900/50 text-teal-700 dark:text-primary text-sm font-semibold mb-6"
           >
             <Users className="w-4 h-4" />
             <span>What Founders Say</span>
@@ -89,17 +92,17 @@ const TestimonialsSection = () => {
           
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-slate-900"
+            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-slate-900 dark:text-neutral-light"
           >
             What{' '}
-            <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-teal-500 to-cyan-500 dark:from-primary dark:to-cyan-500 bg-clip-text text-transparent">
               Founders Say
             </span>
           </motion.h2>
           
           <motion.p
             variants={itemVariants}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed"
           >
             Real feedback from founders who've transformed their ideas into validated startups with StartUpX.
           </motion.p>
@@ -123,10 +126,20 @@ const TestimonialsSection = () => {
               }}
               className="relative group"
             >
-              <div className="relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 h-full">
+              <div className="relative bg-gradient-to-br from-white via-slate-50 to-white dark:from-slate-800 dark:via-slate-700 dark:to-slate-800 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 dark:border-slate-700 h-full backdrop-blur-sm">
+                {/* Background gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} ${testimonial.darkGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
+                
+                {/* Subtle background pattern */}
+                <div className="absolute inset-0 opacity-5">
+                  <div className="absolute inset-0" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                  }}></div>
+                </div>
+
                 {/* Quote Icon */}
                 <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                  <Quote className="w-12 h-12 text-slate-400" />
+                  <Quote className="w-12 h-12 text-slate-400 dark:text-slate-700" />
                 </div>
 
                 {/* Rating */}
@@ -137,7 +150,7 @@ const TestimonialsSection = () => {
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-lg text-slate-700 leading-relaxed mb-8 relative z-10">
+                <blockquote className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 relative z-10">
                   "{testimonial.quote}"
                 </blockquote>
 
@@ -147,29 +160,26 @@ const TestimonialsSection = () => {
                     <img
                       src={testimonial.avatar}
                       alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg"
+                      className="w-16 h-16 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg"
                     />
-                    <div className={`absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-r ${testimonial.gradient} rounded-full flex items-center justify-center`}>
+                    <div className={`absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-r ${testimonial.gradient} ${testimonial.darkGradient} rounded-full flex items-center justify-center`}>
                       <Award className="w-3 h-3 text-white" />
                     </div>
                   </div>
                   
                   <div>
-                    <h4 className="font-bold text-slate-900 text-lg">
+                    <h4 className="font-bold text-slate-900 dark:text-neutral-light text-lg">
                       {testimonial.name}
                     </h4>
-                    <p className="text-slate-600 font-medium">
+                    <p className="text-slate-600 dark:text-slate-400 font-medium">
                       {testimonial.tag}
                     </p>
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm text-slate-500 dark:text-slate-500">
                       {testimonial.company}
                     </p>
                   </div>
                 </div>
 
-                {/* Hover Glow Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${testimonial.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
-                
                 {/* Floating Sparkle */}
                 <motion.div
                   animate={{ 
@@ -182,9 +192,9 @@ const TestimonialsSection = () => {
                     ease: "easeInOut",
                     delay: index * 0.7
                   }}
-                  className="absolute -top-2 -left-2 bg-white p-2 rounded-full shadow-lg border border-slate-100"
+                  className="absolute -top-2 -left-2 bg-white dark:bg-slate-700 p-2 rounded-full shadow-lg border border-slate-100 dark:border-slate-800"
                 >
-                  <Sparkles className="w-4 h-4 text-yellow-500" />
+                  <Sparkles className="w-4 h-4 text-yellow-500 dark:text-accent" />
                 </motion.div>
               </div>
             </motion.div>
@@ -198,12 +208,12 @@ const TestimonialsSection = () => {
           transition={{ delay: 1, duration: 0.8 }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-3xl p-12 border border-teal-100">
+          <div className="bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-neutral-dark dark:to-slate-900 rounded-3xl p-12 border border-teal-100 dark:border-slate-800">
             <div className="text-center mb-8">
-              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-neutral-light mb-4">
                 Join the Community
               </h3>
-              <p className="text-lg text-slate-600">
+              <p className="text-lg text-slate-600 dark:text-slate-400">
                 Become part of our growing founder ecosystem
               </p>
             </div>
@@ -225,13 +235,13 @@ const TestimonialsSection = () => {
                     whileHover={{ scale: 1.05 }}
                     className="group cursor-pointer"
                   >
-                    <div className="inline-flex p-3 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 shadow-lg mb-4 group-hover:shadow-teal-500/50 transition-all duration-300">
+                    <div className="inline-flex p-3 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 dark:from-primary dark:to-cyan-500 shadow-lg mb-4 group-hover:shadow-teal-500/50 transition-all duration-300">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
-                    <div className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors">
+                    <div className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-neutral-light mb-2 group-hover:text-teal-400 transition-colors">
                       {stat.value}
                     </div>
-                    <div className="text-slate-600 text-sm font-medium">
+                    <div className="text-slate-600 dark:text-slate-400 text-sm font-medium">
                       {stat.label}
                     </div>
                   </motion.div>

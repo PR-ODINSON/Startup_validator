@@ -21,19 +21,19 @@ const Footer = () => {
       name: 'LinkedIn', 
       href: 'https://linkedin.com/company/startupx', 
       icon: Linkedin,
-      color: 'hover:text-blue-400'
+      color: 'hover:text-secondary'
     },
     { 
       name: 'GitHub', 
       href: 'https://github.com/startupx', 
       icon: Github,
-      color: 'hover:text-slate-300'
+      color: 'hover:text-neutral-light'
     },
     { 
       name: 'Email', 
       href: 'mailto:hello@startupx.com', 
       icon: Mail,
-      color: 'hover:text-orange-400'
+      color: 'hover:text-accent'
     }
   ];
 
@@ -60,7 +60,7 @@ const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="bg-gray-900 text-white relative overflow-hidden">
+    <footer id="contact" className="bg-neutral-dark text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -70,8 +70,8 @@ const Footer = () => {
 
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-        <div className="absolute bottom-20 right-20 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div className="absolute top-20 left-20 w-64 h-64 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:opacity-20"></div>
+        <div className="absolute bottom-20 right-20 w-64 h-64 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:opacity-20"></div>
       </div>
 
       <div className="container-custom relative z-10">
@@ -88,16 +88,16 @@ const Footer = () => {
             <motion.div variants={itemVariants} className="space-y-8">
               {/* Brand */}
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl">
+                <div className="p-3 bg-gradient-to-r from-accent to-red-500 rounded-xl">
                   <Zap className="w-8 h-8 text-white" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">StartupX</h3>
-                  <p className="text-slate-400 text-sm">AI-Powered Validation</p>
+                  <p className="text-slate-400 dark:text-slate-500 text-sm">AI-Powered Validation</p>
                 </div>
               </div>
               
-              <p className="text-slate-300 leading-relaxed max-w-md text-lg">
+              <p className="text-slate-300 dark:text-slate-400 leading-relaxed max-w-md text-lg">
                 Validate your startup idea in minutes, not months. Get expert-level insights from our AI agents.
               </p>
 
@@ -110,7 +110,7 @@ const Footer = () => {
                       key={index}
                       href={link.href}
                       whileHover={{ x: 5 }}
-                      className="text-slate-300 hover:text-white transition-all duration-300 flex items-center gap-2 group py-2 text-base"
+                      className="text-slate-300 dark:text-slate-400 hover:text-white dark:hover:text-accent transition-all duration-300 flex items-center gap-2 group py-2 text-base"
                     >
                       <span>{link.name}</span>
                       <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -137,7 +137,7 @@ const Footer = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`p-4 bg-slate-800 rounded-xl text-slate-400 ${social.color} transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25`}
+                        className={`p-4 bg-slate-800 dark:bg-neutral-dark/80 rounded-xl text-slate-400 ${social.color} transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25`}
                       >
                         <Icon className="w-6 h-6" />
                       </motion.a>
@@ -147,11 +147,11 @@ const Footer = () => {
 
                 {/* Contact Info */}
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-slate-300">
-                    <Mail className="w-5 h-5 text-orange-400" />
+                  <div className="flex items-center gap-3 text-slate-300 dark:text-slate-400">
+                    <Mail className="w-5 h-5 text-accent" />
                     <span className="text-lg">hello@startupx.com</span>
                   </div>
-                  <div className="text-slate-400">
+                  <div className="text-slate-400 dark:text-slate-500">
                     Response time: Usually within 24 hours
                   </div>
                 </div>
@@ -160,12 +160,12 @@ const Footer = () => {
               {/* Beta Message */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 rounded-2xl p-6 backdrop-blur-sm"
+                className="bg-gradient-to-r from-accent/20 to-red-500/20 border border-accent/30 dark:border-accent/50 rounded-2xl p-6 backdrop-blur-sm"
               >
                 <div className="text-center">
                   <div className="text-2xl mb-2">🚧</div>
                   <h5 className="text-white font-bold text-lg mb-2">In Beta – Feedback helps us grow.</h5>
-                  <p className="text-slate-300 text-sm">
+                  <p className="text-slate-300 dark:text-slate-400 text-sm">
                     We're constantly improving based on founder feedback. Join our beta community!
                   </p>
                 </div>

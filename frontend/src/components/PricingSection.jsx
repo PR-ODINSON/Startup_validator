@@ -24,7 +24,8 @@ const PricingSection = () => {
         'Free consultation session'
       ],
       highlight: 'Limited Time',
-      gradient: 'from-blue-500 to-blue-600'
+      gradient: 'from-blue-500 to-blue-600',
+      darkGradient: 'dark:from-secondary dark:to-blue-600'
     },
     {
       name: 'Launch Special',
@@ -40,6 +41,7 @@ const PricingSection = () => {
       ],
       highlight: 'Most Popular',
       gradient: 'from-purple-500 to-purple-600',
+      darkGradient: 'dark:from-accent dark:to-purple-600',
       popular: true
     },
     {
@@ -55,7 +57,8 @@ const PricingSection = () => {
         'Direct line to founders'
       ],
       highlight: 'Exclusive',
-      gradient: 'from-emerald-500 to-emerald-600'
+      gradient: 'from-emerald-500 to-emerald-600',
+      darkGradient: 'dark:from-primary dark:to-emerald-600'
     }
   ];
 
@@ -82,10 +85,10 @@ const PricingSection = () => {
   };
 
   return (
-    <section id="pricing" className="section-padding bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+    <section id="pricing" className="section-padding bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 dark:from-neutral-dark dark:via-secondary/20 dark:to-slate-900 relative overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 dark:from-secondary/10 dark:via-purple-600/10 dark:to-secondary/10 animate-pulse"></div>
         <motion.div
           animate={{
             background: [
@@ -109,7 +112,7 @@ const PricingSection = () => {
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold mb-8 shadow-2xl"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 dark:from-accent dark:to-red-500 text-white font-bold mb-8 shadow-2xl"
           >
             <motion.div
               animate={{ rotate: 360 }}
@@ -125,7 +128,7 @@ const PricingSection = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
           >
             Get{' '}
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 dark:from-secondary dark:via-purple-400 dark:to-secondary bg-clip-text text-transparent">
               Exclusive Access
             </span>
           </motion.h2>
@@ -168,7 +171,7 @@ const PricingSection = () => {
                 {/* Popular badge */}
                 {feature.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-2xl animate-pulse">
+                    <div className="bg-gradient-to-r from-orange-500 to-red-500 dark:from-accent dark:to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-2xl animate-pulse">
                       {feature.highlight}
                     </div>
                   </div>
@@ -178,14 +181,14 @@ const PricingSection = () => {
                   
                   {/* Animated background gradient */}
                   <motion.div 
-                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} ${feature.darkGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                     whileHover={{ scale: 1.1 }}
                   />
                   
                   {/* Header */}
                   <div className="relative text-center mb-8">
                     <motion.div 
-                      className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} shadow-2xl mb-6`}
+                      className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} ${feature.darkGradient} shadow-2xl mb-6`}
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -197,7 +200,7 @@ const PricingSection = () => {
 
                   {/* Highlight badge */}
                   <div className="relative text-center mb-8">
-                    <div className={`inline-flex px-4 py-2 rounded-full bg-gradient-to-r ${feature.gradient} text-white font-bold text-sm shadow-lg`}>
+                    <div className={`inline-flex px-4 py-2 rounded-full bg-gradient-to-r ${feature.gradient} ${feature.darkGradient} text-white font-bold text-sm shadow-lg`}>
                       {feature.highlight}
                     </div>
                   </div>
@@ -213,7 +216,7 @@ const PricingSection = () => {
                           animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                           transition={{ delay: 0.1 * benefitIndex }}
                         >
-                          <div className={`flex-shrink-0 p-1 rounded-full bg-gradient-to-r ${feature.gradient} mt-1`}>
+                          <div className={`flex-shrink-0 p-1 rounded-full bg-gradient-to-r ${feature.gradient} ${feature.darkGradient} mt-1`}>
                             <Check className="w-3 h-3 text-white" />
                           </div>
                           <span className="text-slate-300 text-sm leading-relaxed">{benefit}</span>
@@ -223,7 +226,7 @@ const PricingSection = () => {
                   </div>
 
                   {/* Decorative glow */}
-                  <div className={`absolute -inset-1 bg-gradient-to-r ${feature.gradient} rounded-3xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`} />
+                  <div className={`absolute -inset-1 bg-gradient-to-r ${feature.gradient} ${feature.darkGradient} rounded-3xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`} />
                 </div>
               </motion.div>
             );
