@@ -8,7 +8,7 @@ import { ThemeToggle } from './index';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { navigateToPage, currentPage } = useComingSoon();
+  const { navigateToPage, currentPage, previousPage } = useComingSoon();
 
   console.log('Navbar rendered');
 
@@ -22,12 +22,29 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
+    { name: 'Dashboard', href: 'dashboard', isPage: true },
     { name: 'Submit Idea', href: 'submit-idea', isPage: true },
     { name: 'How it Works', href: '#how-it-works' },
     { name: 'Why Choose Us', href: '#why-choose-us' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  // Dashboard nav items
+  const dashboardNavItems = [
+    { name: 'Dashboard', href: 'dashboard', isPage: true },
+    { name: 'Submit Idea', href: 'submit-idea', isPage: true },
+    { name: 'Reports', href: 'reports', isPage: true },
+    { name: 'Vulnerabilities', href: 'vulnerabilities', isPage: true },
+  ];
+
+  // Filter nav items based on context
+  let navItemsToShow = navItems;
+  if (currentPage === 'submit-idea' && previousPage === 'dashboard') {
+    navItemsToShow = dashboardNavItems;
+  } else if (currentPage === 'submit-idea') {
+    navItemsToShow = filteredNavItems;
+  }
 
   // Filter out "Submit Idea" when on submit idea page
   const filteredNavItems = currentPage === 'submit-idea' 
@@ -87,7 +104,13 @@ const Navbar = () => {
             {/* Back to Home button when on submit idea page */}
             {currentPage === 'submit-idea' && (
               <motion.button
-                onClick={() => navigateToPage('home')}
+                onClick={() => {
+                  if (previousPage === 'dashboard') {
+                    navigateToPage('dashboard');
+                  } else {
+                    navigateToPage('home');
+                  }
+                }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
@@ -96,11 +119,11 @@ const Navbar = () => {
                 className="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors duration-200"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Back to Home
+                {previousPage === 'dashboard' ? 'Back to Dashboard' : 'Back to Home'}
               </motion.button>
             )}
             
-            {filteredNavItems.map((item, index) => (
+            {navItemsToShow.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
@@ -179,7 +202,11 @@ const Navbar = () => {
                 {currentPage === 'submit-idea' && (
                   <motion.button
                     onClick={() => {
-                      navigateToPage('home');
+                      if (previousPage === 'dashboard') {
+                        navigateToPage('dashboard');
+                      } else {
+                        navigateToPage('home');
+                      }
                       setIsMobileMenuOpen(false);
                     }}
                     initial={{ opacity: 0, x: -20 }}
@@ -188,11 +215,11 @@ const Navbar = () => {
                     className="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 font-medium transition-colors duration-200 py-2"
                   >
                     <ArrowLeft className="w-4 h-4" />
-                    Back to Home
+                    {previousPage === 'dashboard' ? 'Back to Dashboard' : 'Back to Home'}
                   </motion.button>
                 )}
                 
-                {filteredNavItems.map((item, index) => (
+                {navItemsToShow.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}

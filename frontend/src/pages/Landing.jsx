@@ -10,6 +10,7 @@ import {
   PricingSection,
   ProcessSection
 } from '../components';
+import DashboardPreviewSection from '../components/DashboardPreviewSection';
 
 const Landing = () => {
   return (
@@ -21,6 +22,7 @@ const Landing = () => {
       <FeaturesSection />
       <ProcessSection />
       <PricingSection />
+      <DashboardPreviewSection />
       <TestimonialsSection />
       <ComingSoonSection />
     </>

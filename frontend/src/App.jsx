@@ -2,7 +2,7 @@ import React from 'react';
 import { ComingSoonProvider, useComingSoon } from './context/ComingSoonContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar, Footer } from './components';
-import { Landing, SubmitIdeaPage, Login, Signup } from './pages';
+import { Landing, SubmitIdeaPage, Login, Signup, Dashboard, Reports, Vulnerabilities, Profile } from './pages';
 
 function AppContent() {
   const { isComingSoonModalOpen, closeComingSoonModal, currentPage } = useComingSoon();
@@ -16,6 +16,14 @@ function AppContent() {
         return <Login />;
       case 'signup':
         return <Signup />;
+      case 'dashboard':
+        return <Dashboard />;
+      case 'reports':
+        return <Reports />;
+      case 'vulnerabilities':
+        return <Vulnerabilities />;
+      case 'profile':
+        return <Profile />;
       case 'home':
       default:
         return <Landing />;
@@ -24,12 +32,15 @@ function AppContent() {
 
   // Don't show navbar and footer for auth pages
   const isAuthPage = currentPage === 'login' || currentPage === 'signup';
+  
+  // Don't show navbar and footer for dashboard pages (they have their own navigation)
+  const isDashboardPage = currentPage === 'dashboard' || currentPage === 'reports' || currentPage === 'vulnerabilities';
 
   return (
     <div className="App">
-      {!isAuthPage && <Navbar />}
+      {!isAuthPage && !isDashboardPage && <Navbar />}
       {renderPage()}
-      {!isAuthPage && <Footer />}
+      {!isAuthPage && !isDashboardPage && <Footer />}
       
       {/* Coming Soon Modal */}
       {isComingSoonModalOpen && (

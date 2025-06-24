@@ -14,12 +14,14 @@ export const useComingSoon = () => {
 export const ComingSoonProvider = ({ children }) => {
   const [isComingSoonModalOpen, setIsComingSoonModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
+  const [previousPage, setPreviousPage] = useState(null);
 
   const openComingSoonModal = () => setIsComingSoonModalOpen(true);
   const closeComingSoonModal = () => setIsComingSoonModalOpen(false);
 
   // Function to handle page navigation
   const navigateToPage = (page) => {
+    setPreviousPage(currentPage);
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
@@ -30,7 +32,8 @@ export const ComingSoonProvider = ({ children }) => {
       closeComingSoonModal, 
       isComingSoonModalOpen,
       navigateToPage,
-      currentPage
+      currentPage,
+      previousPage
     }}>
       {children}
     </ComingSoonContext.Provider>
