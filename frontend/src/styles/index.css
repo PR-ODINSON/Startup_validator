@@ -225,6 +225,26 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
+  .hero-aurora {
+    @apply bg-slate-950;
+  }
+
+  .mesh-gradient {
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(249, 115, 22, 0.35), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 90% 10%, rgba(251, 191, 36, 0.2), transparent 50%),
+      radial-gradient(ellipse 60% 70% at 70% 80%, rgba(234, 88, 12, 0.18), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 30% 90%, rgba(255, 255, 255, 0.06), transparent 45%);
+  }
+
+  .glass-nav-scrolled {
+    @apply bg-white/75 backdrop-blur-xl border-b border-slate-200/80;
+  }
+
+  .glass-card-dark {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/15;
+  }
+
   .text-balance {
     text-wrap: balance;
   }

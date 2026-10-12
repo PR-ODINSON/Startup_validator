@@ -1,6 +1,7 @@
 import { Controller, Post, Body, Get, Param } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ValidationService } from './validation.service';
+import { SubmitIdeaDto } from './dto/submit-idea.dto';
 
 @ApiTags('validation')
 @Controller('validation')
@@ -10,7 +11,7 @@ export class ValidationController {
   @Post('submit-idea')
   @ApiOperation({ summary: 'Submit a startup idea for validation' })
   @ApiResponse({ status: 201, description: 'Idea submitted successfully' })
-  async submitIdea(@Body() ideaData: any) {
+  async submitIdea(@Body() ideaData: SubmitIdeaDto) {
     return this.validationService.submitIdea(ideaData);
   }
 
